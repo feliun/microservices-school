@@ -14,7 +14,6 @@
 ### A systemic-based service
 
 ```
-cd 1.Introduction
 cd basic-microservice
 npm i
 npm run start
