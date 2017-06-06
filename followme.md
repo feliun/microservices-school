@@ -20,8 +20,13 @@ npm run start
 curl http://localhost:3000/__/manifest
 ```
 
+### Node JS Introduction: in-memory RESTful API for recipes
 
-##Node JS Introduction: [in-memory RESTful API for recipes]()
+```
+cd recipes-api
+npm i
+npm run start
+```
 
 # Interaction & comunication
 
