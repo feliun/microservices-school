@@ -10,6 +10,7 @@ module.exports = {
       }
     }
   },
+  store: 'in-memory',
   logger: {
     transport: 'bunyan',
     include: [
