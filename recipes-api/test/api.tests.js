@@ -2,7 +2,7 @@ const expect = require('expect.js');
 const system = require('../system');
 const supertest = require('supertest-as-promised');
 
-describe('Service Tests', () => {
+describe('Recipes API', () => {
   let request;
   let sys;
 
