@@ -25,7 +25,7 @@ curl http://localhost:3000/__/manifest
 ```
 cd recipes-api
 npm i
-npm run start
+npm t
 ```
 
 # Interaction & comunication
