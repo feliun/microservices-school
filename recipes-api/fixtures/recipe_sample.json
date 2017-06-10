@@ -12,10 +12,10 @@
     " teaspoon stevia",
     "3 eggs"
   ],
-  "source_url": "http://www.elanaspantry.com/paleo-pumpkin-bread/",
-  "recipe_id": "166dae",
-  "image_url": "http://static.food2fork.com/paleopumpkinbreadglutenfreegrainfreerecipe413x575b26e.jpg",
-  "social_rank": 100,
-  "publisher_url": "http://www.elanaspantry.com",
+  "recipeUrl": "http://www.elanaspantry.com/paleo-pumpkin-bread/",
+  "id": "166dae",
+  "imageUrl": "http://static.food2fork.com/paleopumpkinbreadglutenfreegrainfreerecipe413x575b26e.jpg",
+  "socialRank": 100,
+  "publisherUrl": "http://www.elanaspantry.com",
   "title": "Paleo Pumpkin Bread"
 }
