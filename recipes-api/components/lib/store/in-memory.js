@@ -4,14 +4,18 @@ module.exports = () => {
 
   const saveRecipe = (recipe) => new Promise((resolve, reject) => {
     if (!recipe.id) return reject(new Error('Could not save recipe with no id'));
+    const current = recipes[recipe.id];
+    if (current) return updateRecipe(current, recipe).then((update) => resolve(update));
     recipes[recipe.id] = recipe;
     return resolve(recipe);
   });
 
-  const updateRecipe = (recipe) => new Promise((resolve, reject) => {
-    if (!recipe.id) return reject(new Error('Could not update recipe with no id'));
-    recipes[recipe.id] = recipe;
-    return resolve(recipe);
+  const updateRecipe = (current, update) => new Promise((resolve, reject) => {
+    if (!update.id) return reject(new Error('Could not update recipe with no id'));
+    if (!update.version) return reject(new Error('Could not update recipe with no version'));
+    if (update.version < current.version) return resolve(current);
+    recipes[update.id] = update;
+    return resolve(update);
   });
 
   const deleteRecipe = (id) => new Promise((resolve, reject) => {
@@ -32,7 +36,6 @@ module.exports = () => {
 
   return {
     saveRecipe,
-    updateRecipe,
     deleteRecipe,
     getRecipe,
     flush: () => {

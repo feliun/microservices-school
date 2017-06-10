@@ -11,27 +11,38 @@ describe('In memory store', () => {
     store = createStore();
   });
 
-  it('should save a recipe', () =>
-    store.saveRecipe(recipe)
-      .then(() => store.getRecipe(recipe.id))
-      .then((saved) => expect(saved).to.eql(recipe))
-  );
-
   it('should throw an error when saving a recipe with no id', () =>
     store.saveRecipe(R.omit('id',recipe))
       .catch((err) => expect(err.message).to.equal('Could not save recipe with no id'))
   );
 
-  it('should update a recipe', () => {
-    const update = R.merge(recipe, { title: "some made up title" });
+  it('should save a recipe when the recipe does not exist', () =>
+    store.saveRecipe(recipe)
+      .then(() => store.getRecipe(recipe.id))
+      .then((saved) => expect(saved).to.eql(recipe))
+  );
+
+  it('should update a recipe when the recipe exists and the new version is greater than the saved one', () => {
+    const greaterVersion = new Date().getTime();
+    const update = R.merge(recipe, { version: greaterVersion });
     return store.saveRecipe(recipe)
-      .then(() => store.updateRecipe(update))
-      .then((updated) => expect(updated).to.eql(update))
+      .then((saved) => store.saveRecipe(update))
+      .then((update) => store.getRecipe(recipe.id))
+      .then((saved) => expect(saved.version).to.eql(greaterVersion))
   });
 
-  it('should throw an error when updating a recipe with no id', () =>
-    store.updateRecipe(R.omit('id',recipe))
-      .catch((err) => expect(err.message).to.equal('Could not update recipe with no id'))
+  it('should not update a recipe when the recipe exists and the new version is lower than the saved one', () => {
+    const lowerVersion = 1;
+    const update = R.merge(recipe, { version: lowerVersion });
+    return store.saveRecipe(recipe)
+      .then((saved) => store.saveRecipe(update))
+      .then((update) => store.getRecipe(recipe.id))
+      .then((saved) => expect(saved.version).to.eql(recipe.version))
+  });
+
+  it('should throw an error when deleting a recipe with no id', () =>
+    store.deleteRecipe(null)
+      .catch((err) => expect(err.message).to.equal('Could not delete recipe with no id'))
   );
 
   it('should delete a recipe', () =>
@@ -39,10 +50,5 @@ describe('In memory store', () => {
       .then(() => store.deleteRecipe(recipe.id))
       .then(() => store.getRecipe(recipe.id))
       .then((saved) => expect(saved).to.eql(undefined))
-  );
-
-  it('should throw an error when deleting a recipe with no id', () =>
-    store.deleteRecipe(null)
-      .catch((err) => expect(err.message).to.equal('Could not delete recipe with no id'))
   );
 });
