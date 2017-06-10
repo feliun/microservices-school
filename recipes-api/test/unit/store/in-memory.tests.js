@@ -36,13 +36,13 @@ describe('In memory store', () => {
 
   it('should delete a recipe', () =>
     store.saveRecipe(recipe)
-      .then(() => store.deleteRecipe(recipe))
+      .then(() => store.deleteRecipe(recipe.id))
       .then(() => store.getRecipe(recipe.id))
       .then((saved) => expect(saved).to.eql(undefined))
   );
 
   it('should throw an error when deleting a recipe with no id', () =>
-    store.deleteRecipe(R.omit('id',recipe))
+    store.deleteRecipe(null)
       .catch((err) => expect(err.message).to.equal('Could not delete recipe with no id'))
   );
 });

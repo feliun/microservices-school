@@ -1,6 +1,6 @@
 module.exports = () => {
 
-  const recipes = {};
+  let recipes = {};
 
   const saveRecipe = (recipe) => new Promise((resolve, reject) => {
     if (!recipe.id) return reject(new Error('Could not save recipe with no id'));
@@ -14,10 +14,10 @@ module.exports = () => {
     return resolve(recipe);
   });
 
-  const deleteRecipe = (recipe) => new Promise((resolve, reject) => {
-    if (!recipe.id) return reject(new Error('Could not delete recipe with no id'));
-    delete recipes[recipe.id];
-    return resolve(recipe);
+  const deleteRecipe = (id) => new Promise((resolve, reject) => {
+    if (!id) return reject(new Error('Could not delete recipe with no id'));
+    delete recipes[id];
+    return resolve(id);
   });
 
   const getRecipe = (id) => new Promise((resolve, reject) => {
@@ -25,11 +25,20 @@ module.exports = () => {
     return resolve(recipes[id]);
   });
 
+  const flush = () => new Promise((resolve) => {
+    recipes = {};
+    return resolve();
+  });
+
   return {
     saveRecipe,
     updateRecipe,
     deleteRecipe,
-    getRecipe
+    getRecipe,
+    flush: () => {
+      if (process.env.NODE_ENV !== 'test') throw new Error('Flushing the in-memory db is not allowed!');
+      return flush();
+    }
   };
 
 };

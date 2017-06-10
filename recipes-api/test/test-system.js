@@ -1,6 +1,4 @@
 const system = require('../system');
 
-module.exports = () => {
-  return system();
-};
+module.exports = (mockFn) => mockFn(system());
 

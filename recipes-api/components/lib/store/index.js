@@ -8,7 +8,7 @@ module.exports = () => {
   const start = ({ config: store }, cb) => {
     const pickedStore = stores[store];
     if (!pickedStore) return cb(new Error(`No available store with name ${store}`));
-    cb(null, pickedStore);
+    cb(null, pickedStore());
   };
 
   return { start };
