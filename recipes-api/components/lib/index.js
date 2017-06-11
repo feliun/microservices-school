@@ -8,4 +8,5 @@ const store = require('./store');
 module.exports = new System({ name: 'lib' })
   .add('manifest', manifest)
   .add('pkg', pkg)
-  .add('store', store()).dependsOn('config');
+  .add('store', store())
+  .dependsOn('config', 'collections', 'logger');

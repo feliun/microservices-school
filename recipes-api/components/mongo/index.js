@@ -4,4 +4,4 @@ const initCollections = require('./initCollections');
 
 module.exports = new System({ name: 'mongodb' })
   .add('mongo', mongodb()).dependsOn('config', 'logger')
-  .add('mongo.collections', initCollections()).dependsOn('mongo');
+  .add('collections', initCollections()).dependsOn('mongo');

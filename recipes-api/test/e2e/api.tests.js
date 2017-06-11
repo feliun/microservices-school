@@ -1,3 +1,4 @@
+const R = require('ramda');
 const expect = require('expect.js');
 const statusCodes = require('http-status-codes');
 const supertest = require('supertest-as-promised');
@@ -9,6 +10,8 @@ describe('In-memory Recipes API', () => {
   let request;
   let sys;
   let myStore;
+
+  const normalise = R.omit('_id');
 
   const mockFn = (system) =>
     system()
@@ -53,7 +56,7 @@ describe('In-memory Recipes API', () => {
         get(recipe.id)
           .then((response) => {
             expect(response.headers['content-type']).to.equal('application/json; charset=utf-8');
-            expect(response.body).to.eql(recipe);
+            expect(normalise(response.body)).to.eql(normalise(recipe));
           })
       )
   );
