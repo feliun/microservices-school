@@ -67,6 +67,6 @@ describe('Mongo store', () => {
     myStore.saveRecipe(recipe)
       .then(() => myStore.deleteRecipe(recipe.id))
       .then(() => myStore.getRecipe(recipe.id))
-      .then((saved) => expect(saved).to.eql(undefined))
+      .then((saved) => expect(saved).to.eql(null))
   );
 });
