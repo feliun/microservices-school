@@ -9,4 +9,4 @@ module.exports = new System({ name: 'lib' })
   .add('manifest', manifest)
   .add('pkg', pkg)
   .add('store', store())
-  .dependsOn('config', 'collections', 'logger');
+  .dependsOn('config', 'collections', 'logger', 'broker');

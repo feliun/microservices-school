@@ -5,9 +5,11 @@ const stores = require('require-all')({
 
 module.exports = () => {
 
-  const start = ({ config: store, collections, logger }, cb) => {
+  const start = ({ config: store, collections, logger, broker }, cb) => {
     const pickedStore = stores[store] && stores[store](collections);
     if (!pickedStore) return cb(new Error(`No available store with name ${store}`));
+
+    const publish = (obj, action) => broker.publish('conclusions', obj, `recipes_api.v1.notifications.recipe.${action}`);
 
     const saveRecipe = (recipe) => {
       if (!recipe.id) return Promise.reject(new Error('Could not save recipe with no id'));
@@ -15,7 +17,8 @@ module.exports = () => {
         .then((existing) => {
           if (existing) return updateRecipe(existing, recipe);
           logger.info(`Inserting new recipe with id ${recipe.id}`);
-          return pickedStore.saveRecipe(recipe);
+          return pickedStore.saveRecipe(recipe)
+          .then(() => publish(recipe, 'saved'));
         });
     };
 
@@ -30,7 +33,8 @@ module.exports = () => {
     const deleteRecipe = (id) => {
       if (!id) return Promise.reject(new Error('Could not delete recipe with no id'));
       logger.info(`Deleting recipe with id ${id}`);
-      return pickedStore.deleteRecipe(id);
+      return pickedStore.deleteRecipe(id)
+      .then(() => publish({ id }, 'deleted'));
     };
 
     const getRecipe = (id) => {
