@@ -42,6 +42,15 @@ ajv@^4.7.0:
     co "^4.6.0"
     json-stable-stringify "^1.0.1"
 
+amqplib@^0.5.1:
+  version "0.5.1"
+  resolved "http://npm.tescloud.com/amqplib/-/amqplib-0.5.1.tgz#7cccfebabe56c2e984ea7a2243f7cefe6fbfc6cf"
+  dependencies:
+    bitsyntax "~0.0.4"
+    bluebird "^3.4.6"
+    buffer-more-ints "0.0.2"
+    readable-stream "1.x >=1.1.9"
+
 ansi-escapes@^1.1.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-1.4.0.tgz#d3a8a83b319aa67793662b13e761c7911422306e"
@@ -96,7 +105,7 @@ arrify@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
 
-async@^2.0.0, async@^2.0.0-rc.5, async@^2.0.0-rc.6:
+async@^2.0.0, async@^2.0.0-rc.5, async@^2.0.0-rc.6, async@^2.1.4, async@^2.4.0:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/async/-/async-2.4.1.tgz#62a56b279c98a11d0987096a01cc3eeb8eb7bbd7"
   dependencies:
@@ -118,7 +127,13 @@ balanced-match@^0.4.1:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-0.4.2.tgz#cb3f3e3c732dc0f01ee70b403f302e61d7709838"
 
-bluebird@^3.3.1:
+bitsyntax@~0.0.4:
+  version "0.0.4"
+  resolved "http://npm.tescloud.com/bitsyntax/-/bitsyntax-0.0.4.tgz#eb10cc6f82b8c490e3e85698f07e83d46e0cba82"
+  dependencies:
+    buffer-more-ints "0.0.2"
+
+bluebird@^3.3.1, bluebird@^3.4.6:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
 
@@ -167,6 +182,10 @@ braces@^1.8.2:
 bson@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/bson/-/bson-1.0.4.tgz#93c10d39eaa5b58415cbc4052f3e53e562b0b72c"
+
+buffer-more-ints@0.0.2:
+  version "0.0.2"
+  resolved "http://npm.tescloud.com/buffer-more-ints/-/buffer-more-ints-0.0.2.tgz#26b3885d10fa13db7fc01aae3aab870199e0124c"
 
 buffer-shims@~1.0.0:
   version "1.0.0"
@@ -337,7 +356,7 @@ debug@2.6.7:
   dependencies:
     ms "2.0.0"
 
-debug@^2.1.1, debug@^2.2.0:
+debug@^2.1.1, debug@^2.1.3, debug@^2.2.0, debug@^2.6.0:
   version "2.6.8"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.8.tgz#e731531ca2ede27d188222427da17821d68ff4fc"
   dependencies:
@@ -728,6 +747,10 @@ formidable@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/formidable/-/formidable-1.1.1.tgz#96b8886f7c3c3508b932d6bd70c4d3a88f35f1a9"
 
+forward-emitter@^0.1.1:
+  version "0.1.1"
+  resolved "http://npm.tescloud.com/forward-emitter/-/forward-emitter-0.1.1.tgz#56edd0c082250edba334e0b922ffd2c01939dee1"
+
 forwarded@~0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.0.tgz#19ef9874c4ae1c297bcf078fde63a09b66a84363"
@@ -1061,6 +1084,10 @@ is-resolvable@^1.0.0:
   dependencies:
     tryit "^1.0.1"
 
+isarray@0.0.1:
+  version "0.0.1"
+  resolved "http://npm.tescloud.com/isarray/-/isarray-0.0.1.tgz#8a18acfca9a8f4177e09abfc6038939b05d1eedf"
+
 isarray@1.0.0, isarray@^1.0.0, isarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
@@ -1132,11 +1159,11 @@ lodash.find@^4.4.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash.find/-/lodash.find-4.6.0.tgz#cb0704d47ab71789ffa0de8b97dd926fb88b13b1"
 
-lodash.get@^4.3.0:
+lodash.get@^4.3.0, lodash.get@^4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
 
-lodash.has@^4.2.0, lodash.has@^4.4.0:
+lodash.has@^4.2.0, lodash.has@^4.4.0, lodash.has@^4.5.2:
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/lodash.has/-/lodash.has-4.5.2.tgz#d19f4dc1095058cccbe2b0cdf4ee0fe4aa37c862"
 
@@ -1176,13 +1203,28 @@ lodash.toarray@^4.2.4:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/lodash.toarray/-/lodash.toarray-4.4.0.tgz#24c4bfcd6b2fba38bfd0594db1179d8e9b656561"
 
-lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.3.0:
+lodash@^3.5.0:
+  version "3.10.1"
+  resolved "http://npm.tescloud.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
+
+lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.3.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+
+lodash@~2.4.1:
+  version "2.4.2"
+  resolved "http://npm.tescloud.com/lodash/-/lodash-2.4.2.tgz#fadd834b9683073da179b3eae6d9c0d15053f73e"
 
 lru-cache@2:
   version "2.7.3"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-2.7.3.tgz#6d4524e8b955f95d4f5b58851ce21dd72fb4e952"
+
+lru-cache@^4.0.2:
+  version "4.1.1"
+  resolved "http://npm.tescloud.com/lru-cache/-/lru-cache-4.1.1.tgz#622e32e82488b49279114a4f9ecf45e7cd6bba55"
+  dependencies:
+    pseudomap "^1.0.2"
+    yallist "^2.1.2"
 
 make-manifest@^0.1.2:
   version "0.1.2"
@@ -1196,6 +1238,12 @@ make-manifest@^0.1.2:
 media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
+
+merge-defaults@^0.2.1:
+  version "0.2.1"
+  resolved "http://npm.tescloud.com/merge-defaults/-/merge-defaults-0.2.1.tgz#dd42248eb96bb6a51521724321c72ff9583dde80"
+  dependencies:
+    lodash "~2.4.1"
 
 merge-descriptors@1.0.1:
   version "1.0.1"
@@ -1593,6 +1641,10 @@ proxy-addr@~1.1.4:
     forwarded "~0.1.0"
     ipaddr.js "1.3.0"
 
+pseudomap@^1.0.2:
+  version "1.0.2"
+  resolved "http://npm.tescloud.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
+
 qs@6.4.0, qs@^6.1.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.4.0.tgz#13e26d28ad6b0ffaa91312cd3bf708ed351e7233"
@@ -1616,6 +1668,23 @@ range-parser@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
 
+rascal@^1.1.0:
+  version "1.1.0"
+  resolved "http://npm.tescloud.com/rascal/-/rascal-1.1.0.tgz#7093df116095122f2101fdf96db65cb59611d0ea"
+  dependencies:
+    amqplib "^0.5.1"
+    async "^2.1.4"
+    debug "^2.6.0"
+    deep-freeze "0.0.1"
+    forward-emitter "^0.1.1"
+    lodash "^4.17.4"
+    lru-cache "^4.0.2"
+    merge-defaults "^0.2.1"
+    safe-json-parse "^4.0.0"
+    stashback "^0.1.2"
+    uuid "^3.0.1"
+    xregexp "^3.1.1"
+
 raw-body@~2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/raw-body/-/raw-body-2.2.0.tgz#994976cf6a5096a41162840492f0bdc5d6e7fb96"
@@ -1624,21 +1693,18 @@ raw-body@~2.2.0:
     iconv-lite "0.4.15"
     unpipe "1.0.0"
 
-readable-stream@2.2.7:
-  version "2.2.7"
-  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.2.7.tgz#07057acbe2467b22042d36f98c5ad507054e95b1"
+"readable-stream@1.x >=1.1.9":
+  version "1.1.14"
+  resolved "http://npm.tescloud.com/readable-stream/-/readable-stream-1.1.14.tgz#7cf4c54ef648e3813084c636dd2079e166c081d9"
   dependencies:
-    buffer-shims "~1.0.0"
     core-util-is "~1.0.0"
     inherits "~2.0.1"
-    isarray "~1.0.0"
-    process-nextick-args "~1.0.6"
-    string_decoder "~1.0.0"
-    util-deprecate "~1.0.1"
+    isarray "0.0.1"
+    string_decoder "~0.10.x"
 
-readable-stream@^2.0.5, readable-stream@^2.2.2:
-  version "2.2.9"
-  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.2.9.tgz#cf78ec6f4a6d1eb43d26488cac97f042e74b7fc8"
+readable-stream@2.2.7, readable-stream@^2.0.5, readable-stream@^2.2.2:
+  version "2.2.7"
+  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.2.7.tgz#07057acbe2467b22042d36f98c5ad507054e95b1"
   dependencies:
     buffer-shims "~1.0.0"
     core-util-is "~1.0.0"
@@ -1835,6 +1901,13 @@ sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
 
+stashback@^0.1.2:
+  version "0.1.2"
+  resolved "http://npm.tescloud.com/stashback/-/stashback-0.1.2.tgz#71f802efd10c6d6a938d86cccc6e9a602152dbf2"
+  dependencies:
+    debug "^2.1.3"
+    lodash "^3.5.0"
+
 "statuses@>= 1.3.1 < 2", statuses@~1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.3.1.tgz#faf51b9eb74aaef3b3acf4ad5f61abf24cb7b93e"
@@ -1853,6 +1926,10 @@ string-width@^2.0.0:
   dependencies:
     is-fullwidth-code-point "^2.0.0"
     strip-ansi "^3.0.0"
+
+string_decoder@~0.10.x:
+  version "0.10.31"
+  resolved "http://npm.tescloud.com/string_decoder/-/string_decoder-0.10.31.tgz#62e203bc41766c6c28c9fc84301dab1c5310fa94"
 
 string_decoder@~1.0.0:
   version "1.0.1"
@@ -1948,6 +2025,15 @@ systemic-pg@^1.0.6:
     async "^2.0.0"
     lodash.get "^4.3.0"
     pg "^6.1.0"
+
+systemic-rabbitmq@^1.0.1:
+  version "1.0.1"
+  resolved "http://npm.tescloud.com/systemic-rabbitmq/-/systemic-rabbitmq-1.0.1.tgz#34139e03b89c73602b5d131bf214ca71c83f6724"
+  dependencies:
+    async "^2.4.0"
+    lodash.get "^4.4.2"
+    lodash.has "^4.5.2"
+    rascal "^1.1.0"
 
 systemic-service-runner@^1.1.0:
   version "1.1.0"
@@ -2068,6 +2154,14 @@ write@^0.2.1:
   dependencies:
     mkdirp "^0.5.1"
 
+xregexp@^3.1.1:
+  version "3.2.0"
+  resolved "http://npm.tescloud.com/xregexp/-/xregexp-3.2.0.tgz#cb3601987bfe2695b584000c18f1c4a8c322878e"
+
 xtend@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
+
+yallist@^2.1.2:
+  version "2.1.2"
+  resolved "http://npm.tescloud.com/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
