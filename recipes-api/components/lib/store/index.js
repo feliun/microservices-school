@@ -27,7 +27,8 @@ module.exports = () => {
       if (!update.version) return Promise.reject(new Error('Could not update recipe with no version'));
       if (update.version < current.version) return discard(current);
       logger.info(`Updating recipe with id ${update.id} and version ${update.version}`);
-      return pickedStore.updateRecipe(update);
+      return pickedStore.updateRecipe(update)
+        .then(() => publish(update, 'updated'));
     };
 
     const deleteRecipe = (id) => {
