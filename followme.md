@@ -45,6 +45,10 @@ npm t
 
 ## RabbitMQ Introduction
 ### Publishing conclusions
+- [Docker config](https://github.com/feliun/microservices-school/commit/efbec01dde74d9ae07a190c801166367660d9da1)
+- [Wiring up rabbitmq](https://github.com/feliun/microservices-school/commit/de850c4a9e45aef527e3b0fdb5a7c0d726a9f250)
+- [Publishing conclusions on every store action](https://github.com/feliun/microservices-school/commit/a466f9d5d08f510a18919ae3bd94f0965ffe1c59)
+- [Subscribing to conclusions to test published messages](https://github.com/feliun/microservices-school/commit/9035623f0742660f56430bfa5437a74e5cc61599)
 
 # DevOps
 
