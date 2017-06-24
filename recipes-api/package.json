@@ -1,7 +1,7 @@
 {
-  "name": "guidesmiths-microservice-example",
+  "name": "recipes-api",
   "version": "1.0.3",
-  "description": "An example microservice using systemic, confabulous and prepper",
+  "description": "A RESTful API for recipes",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
