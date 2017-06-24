@@ -40,5 +40,25 @@ module.exports = {
       'dependencies',
       'devDependencies'
     ]
+  },
+  rabbitmq: {
+    defaults: {},
+    vhosts: {
+      '/': {
+        connection: {
+          hostname: '127.0.0.1',
+          user: 'rabbitmq',
+          password: 'rabbitmq'
+        },
+        exchanges: [
+          'internal'
+        ],
+        publications: {
+          conclusions: {
+            exchange: 'internal'
+          }
+        }
+      }
+    }
   }
 };
