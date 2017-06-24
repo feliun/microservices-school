@@ -36,6 +36,7 @@ npm t
 # Interaction & comunication
 
 ## Mongo Introduction
+
 ### Mongo RESTful API for recipes
 - [Docker config](https://github.com/feliun/microservices-school/commit/829bbc3ced32e701136f94f55c9f0344abfcd377)
 - [Adding mongo systemic component](https://github.com/feliun/microservices-school/commit/2deb5b311ee785781d20c098f55a52d32ec5e5a4)
@@ -44,6 +45,7 @@ npm t
 - [Refactor: multiple automatic tests](https://github.com/feliun/microservices-school/commit/ef2eb0d9e000dc63fbab2dce4c761ef089c4d28f)
 
 ## RabbitMQ Introduction
+
 ### Publishing conclusions
 - [Docker config](https://github.com/feliun/microservices-school/commit/efbec01dde74d9ae07a190c801166367660d9da1)
 - [Wiring up rabbitmq](https://github.com/feliun/microservices-school/commit/de850c4a9e45aef527e3b0fdb5a7c0d726a9f250)
@@ -51,5 +53,20 @@ npm t
 - [Subscribing to conclusions to test published messages](https://github.com/feliun/microservices-school/commit/9035623f0742660f56430bfa5437a74e5cc61599)
 
 # DevOps
+## Continuos integration
+
+### Recipe crawler
+```
+mkdir recipe-crawler
+cp -r basic-microservice/* recipe-crawler/ && cp -r basic-microservice/.* recipe-crawler/
+rm -rf node_modules/
+nvm use && npm i
+npm t
+```
+
+- [Initial commit](https://github.com/feliun/microservices-school/commit/4aa6fb767a751480eeccb667d2bccd73f4e70228)
+- [Docker config](https://github.com/feliun/microservices-school/commit/2851c9323f9fd4d794f37091735777c1d4dfca1b)
+- [Wiring up rabbitmq](https://github.com/feliun/microservices-school/commit/cf5b166f2f69c20bfa60bb4f30d4bdb0bc68f326)
+- [Basic crawler set up](https://github.com/feliun/microservices-school/commit/072825d0bee2e3e46a21963d109a3bcd49b65130)
 
 # Architecture principles
