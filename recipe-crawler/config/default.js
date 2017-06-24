@@ -41,6 +41,7 @@ module.exports = {
       'devDependencies'
     ]
   },
+  crawler: {},
   rabbitmq: {
     defaults: {},
     vhosts: {
