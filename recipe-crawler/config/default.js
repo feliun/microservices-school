@@ -41,8 +41,10 @@ module.exports = {
       'devDependencies'
     ]
   },
-  crawler: { // once an hour
-    frequency: 3600000
+  crawler: { // once every 2 hours
+    frequency: 7200000,
+    searchUrl: 'http://food2fork.com/api/search',
+    recipeUrl: 'http://food2fork.com/api/get',
   },
   rabbitmq: {
     defaults: {},
