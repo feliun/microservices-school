@@ -47,7 +47,7 @@ module.exports = () => {
       const random = Math.floor(Math.random() * 100);
       return getPage(config.searchUrl, random)
         .then(({ text }) => {
-          const ids = extractIds(JSON.parse(text)).splice(0,3);
+          const ids = extractIds(JSON.parse(text));
           logger.info(`Getting details for ${ids.length} recipes`);
           const recipeRequests = R.map(getRecipe(config.recipeUrl), ids);
           return Promise.all(recipeRequests);
