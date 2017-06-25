@@ -1,4 +1,5 @@
 const R = require('ramda');
+const debug = require('debug')('recipes-crawler');
 const request = require('superagent');
 
 module.exports = () => {
@@ -15,6 +16,7 @@ module.exports = () => {
 
     const getRecipe = R.curry((baseUrl, recipeId) => {
       const url = `${baseUrl}?key=${API_KEY}&rId=${recipeId}`;
+      debug(`Rquesting recipe with url: ${url}`);
       return request.get(url);
     });
 
@@ -45,11 +47,11 @@ module.exports = () => {
     const crawl = () => {
       logger.info('Crawling in search of new recipes...');
       const random = Math.floor(Math.random() * 100);
-      return getPage(config.searchUrl, random)
+      return getPage(`${config.baseUrl}${config.searchSuffix}`, config.page || random)
         .then(({ text }) => {
           const ids = extractIds(JSON.parse(text));
           logger.info(`Getting details for ${ids.length} recipes`);
-          const recipeRequests = R.map(getRecipe(config.recipeUrl), ids);
+          const recipeRequests = R.map(getRecipe(`${config.baseUrl}${config.recipeSuffix}`), ids);
           return Promise.all(recipeRequests);
         })
         .then((recipeResponse) => extractRecipes(recipeResponse))
