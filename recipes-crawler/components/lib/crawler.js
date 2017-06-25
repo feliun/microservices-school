@@ -61,7 +61,7 @@ module.exports = () => {
         .catch((err) => logger.error(`Error when pulling new recipes: ${err.message} ${err.stack}`))
     };
     setInterval(crawl, config.frequency);
-    if (config.autostart) crawl();
+    if (config.autostart) setTimeout(crawl, 500);
     cb();
   };
 
