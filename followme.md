@@ -57,8 +57,8 @@ npm t
 
 ### Recipe crawler
 ```
-mkdir recipe-crawler
-cp -r basic-microservice/* recipe-crawler/ && cp -r basic-microservice/.* recipe-crawler/
+mkdir recipes-crawler
+cp -r basic-microservice/* recipes-crawler/ && cp -r basic-microservice/.* recipes-crawler/
 rm -rf node_modules/
 nvm use && npm i
 npm t
@@ -68,5 +68,9 @@ npm t
 - [Docker config](https://github.com/feliun/microservices-school/commit/2851c9323f9fd4d794f37091735777c1d4dfca1b)
 - [Wiring up rabbitmq](https://github.com/feliun/microservices-school/commit/cf5b166f2f69c20bfa60bb4f30d4bdb0bc68f326)
 - [Basic crawler set up](https://github.com/feliun/microservices-school/commit/072825d0bee2e3e46a21963d109a3bcd49b65130)
+- [Using config](https://github.com/feliun/microservices-school/commit/cd5b8f8342c24e6adf85572415511cb5fb377dff)
+- [Crawling recipes from the source](https://github.com/feliun/microservices-school/commit/1e2005bc386435a3ced034b59d3572278c9b01a3)
+- [Preparation for tests](https://github.com/feliun/microservices-school/commit/d2cde89e0405713e18f2a77e50603ac8083e4347)
+- [Testing crawling](https://github.com/feliun/microservices-school/commit/52a55c751d130242c2db977a5f60eefe93a33705)
 
 # Architecture principles
