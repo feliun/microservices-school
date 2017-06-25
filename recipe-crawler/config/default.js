@@ -41,7 +41,9 @@ module.exports = {
       'devDependencies'
     ]
   },
-  crawler: {},
+  crawler: { // once an hour
+    frequency: 3600000
+  },
   rabbitmq: {
     defaults: {},
     vhosts: {
