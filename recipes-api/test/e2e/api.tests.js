@@ -7,7 +7,7 @@ const configSystem = require('../../components/config');
 const system = require('../../system');
 const recipe = require('../../fixtures/recipe_sample.json');
 const stores = require('require-all')({
-  dirname: join(__dirname, '..', '..', 'components', 'lib', 'store'),
+  dirname: join(__dirname, '..', '..', 'components', 'store', 'types'),
   filter: (fileName) => fileName === 'index.js' ? undefined : fileName.replace('.js', '')
 });
 
