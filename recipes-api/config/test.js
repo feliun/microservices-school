@@ -46,7 +46,7 @@ module.exports = {
           retries: {
             queue: 'retry:snoop'
           },
-          recipes_api: {
+          recipes_snoop: {
             queue: 'recipes_api:snoop',
             contentType: 'application/json'
           }

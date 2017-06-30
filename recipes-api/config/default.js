@@ -53,15 +53,62 @@ module.exports = {
           'retry',
           'dead_letters'
         ],
-        queues: {},
-        bindings: {},
-        subscriptions: {},
+        queues: {
+          'recipes_api:recipe:received': {
+            'options': {
+              'arguments': {
+                'x-dead-letter-exchange': 'dead_letters',
+                'x-dead-letter-routing-key': 'recipes_api.dead_letter'
+              }
+            }
+          },
+          'dead_letter:recipes_api': {}
+        },
+        bindings: {
+          'internal[recipes_crawler.v1.notifications.recipe.crawled] -> recipes_api:recipe:received': {},
+          'retry[recipes_api:recipe:received.#] -> recipes_api:recipe:received': {},
+          'dead_letters[recipes_api.dead_letter] -> dead_letter:recipes_api': {},
+        },
+        subscriptions: {
+          recipes_api: {
+            queue: 'recipes_api:recipe:received',
+            prefetch: 5,
+            contentType: 'application/json'
+          }
+        },
         publications: {
           conclusions: {
             exchange: 'internal'
+          },
+          'retry_in_5m': {
+            exchange: 'delay',
+            options: {
+              CC: [
+                'delay.5m'
+              ]
+            }
           }
         }
       }
+    },
+    recovery: {
+      'deferred_retry': [
+        {
+          strategy: 'forward',
+          attempts: 10,
+          publication: 'retry_in_5m',
+          xDeathFix: true
+        },
+        {
+          strategy: 'nack'
+        }
+      ],
+      'dead_letter': [
+        {
+          strategy: 'republish',
+          immediateNack: true
+        }
+      ]
     }
   }
 };
