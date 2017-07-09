@@ -52,17 +52,7 @@ npm t
 - [Publishing conclusions on every store action](https://github.com/feliun/microservices-school/commit/a466f9d5d08f510a18919ae3bd94f0965ffe1c59)
 - [Subscribing to conclusions to test published messages](https://github.com/feliun/microservices-school/commit/9035623f0742660f56430bfa5437a74e5cc61599)
 
-### Wiring up both services
-- [Subsystem to initialise subscriptions](https://github.com/feliun/microservices-school/commit/1e87161d2d073e9cd42505a59bb8618a1f72c261)
-- [Rabbit config to subscribe to crawler](https://github.com/feliun/microservices-school/commit/3711a1d05f96a31f8b373e4165be976b66fa6746)
-- [Subscribing to crawled recipes](https://github.com/feliun/microservices-school/commit/a5468ce5750a8c6b9c1351211467f12ff2c4d787)
-
-### Testing locally
-- Create your own spy queue and check mongo content
-- [First architecture problem: we need our own ids](https://github.com/feliun/microservices-school/commit/3ec8c312f7468689b537ef4d77aae214979a9773)
-
-# DevOps
-## Continuos integration
+## Building a recipes crawler
 
 ### Recipe crawler
 ```
@@ -72,7 +62,6 @@ rm -rf node_modules/
 nvm use && npm i
 npm t
 ```
-
 - [Initial commit](https://github.com/feliun/microservices-school/commit/4aa6fb767a751480eeccb667d2bccd73f4e70228)
 - [Docker config](https://github.com/feliun/microservices-school/commit/2851c9323f9fd4d794f37091735777c1d4dfca1b)
 - [Wiring up rabbitmq](https://github.com/feliun/microservices-school/commit/cf5b166f2f69c20bfa60bb4f30d4bdb0bc68f326)
@@ -81,5 +70,18 @@ npm t
 - [Crawling recipes from the source](https://github.com/feliun/microservices-school/commit/1e2005bc386435a3ced034b59d3572278c9b01a3)
 - [Preparation for tests](https://github.com/feliun/microservices-school/commit/d2cde89e0405713e18f2a77e50603ac8083e4347)
 - [Testing crawling](https://github.com/feliun/microservices-school/commit/52a55c751d130242c2db977a5f60eefe93a33705)
+
+### Wiring up both services
+- [Subsystem to initialise subscriptions](https://github.com/feliun/microservices-school/commit/1e87161d2d073e9cd42505a59bb8618a1f72c261)
+- [Rabbit config to subscribe to crawler](https://github.com/feliun/microservices-school/commit/3711a1d05f96a31f8b373e4165be976b66fa6746)
+- [Subscribing to crawled recipes](https://github.com/feliun/microservices-school/commit/a5468ce5750a8c6b9c1351211467f12ff2c4d787)
+
+### Testing locally
+- Create your own spy queue and check mongo content
+- [First architecture problem: we need our own ids](https://github.com/feliun/microservices-school/commit/3ec8c312f7468689b537ef4d77aae214979a9773)
+- [Errors handling - recoverable, irrecoverable, absolved](https://github.com/feliun/microservices-school/commit/caaf2b38121591366fbe799a9c40eb358705883e)
+
+# DevOps
+## Continuos integration
 
 # Architecture principles
