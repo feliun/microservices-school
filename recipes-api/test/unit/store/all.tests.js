@@ -26,8 +26,8 @@ const test = (store) => {
         myConfig = R.merge(config, { store });
         sys = system(mockFn).start((err, { store, broker }) => {
           if (err) return done(err);
-          myStore = store;
           myBroker = broker;
+          myStore = store;
           done();
         });
       });
@@ -37,24 +37,35 @@ const test = (store) => {
       myStore.flush()
         .then(() => myBroker.purge()));
 
-    after(done => sys.stop(done));
+    after(done =>
+      myBroker.nuke()
+      .then(() => sys.stop(done)));
 
-    const shouldReceive = (expectedRK) =>
-      myBroker.subscribe('recipes_api')
-        .then(({ message, content, ackOrNack, cancel }) => {
+    const shouldReceive = (expectedRK) => new Promise((resolve, reject) => {
+      myBroker.subscribe('recipes_snoop', (err, subscription) => {
+        if (err) return reject(err);
+        subscription
+        .on('message', (message, content, ackOrNack) => {
           ackOrNack();
           if (message.fields.routingKey !== expectedRK) return shouldReceive(expectedRK);
-          return cancel.then(() => Promise.resolve({ message, content }));
+          return subscription.cancel(() => resolve({ message, content }));
+        })
+        .on('error', reject);
         });
+    });
 
-    const shouldNotReceive = (expectedRK) =>
-      myBroker.subscribe('recipes_api')
-        .then(({ message, ackOrNack, cancel }) => {
+    const shouldNotReceive = (expectedRK) => new Promise((resolve, reject) => {
+      myBroker.subscribe('recipes_snoop', (err, subscription) => {
+        if (err) return reject(err);
+        subscription
+        .on('message', (message, content, ackOrNack) => {
           ackOrNack();
-          if (message.fields.routingKey !== expectedRK) return setTimeout(() => cancel.then(Promise.resolve), 500);
+          if (message.fields.routingKey !== expectedRK) return setTimeout(() => subscription.cancel(resolve), 500);
           return shouldNotReceive(expectedRK);
-        });
-
+        })
+        .on('error', (err) => { throw err });
+      });
+    });
 
     const normalise = R.omit('_id');
 
@@ -75,7 +86,8 @@ const test = (store) => {
       const greaterVersion = new Date().getTime();
       const update = R.merge(recipe, { version: greaterVersion });
       return myStore.saveRecipe(recipe)
-        .then((saved) => myStore.saveRecipe(update))
+        .then(() => shouldReceive('recipes_api.v1.notifications.recipe.saved'))
+        .then(() => myStore.saveRecipe(update))
         .then(() => shouldReceive('recipes_api.v1.notifications.recipe.updated'))
         .then(({ message, content }) => expect(normalise(content)).to.eql(normalise(update)))
         .then(() => myStore.getRecipe(recipe.id))

@@ -13,19 +13,9 @@ module.exports = () => {
         });
     });
 
-    const subscribe = (...args) => new Promise((resolve, reject) => {
-        rabbitmq.broker.subscribe(...args, (err, subscription) => {
-            if (err) return reject(err);
-            const cancel = new Promise(subscription.cancel);
-            subscription
-            .on('message', (message, content, ackOrNack) => resolve({ message, content, ackOrNack, cancel }))
-            .on('error', reject);
-        });
-    });
-
     const broker = {
       publish,
-      subscribe,
+      subscribe: rabbitmq.broker.subscribe,
       nuke: pify(rabbitmq.broker.nuke),
       purge: pify(rabbitmq.broker.purge),
     };
