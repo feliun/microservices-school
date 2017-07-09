@@ -1,3 +1,4 @@
+const R = require('ramda');
 const stores = require('require-all')({
   dirname: __dirname,
   filter: (fileName) => fileName === 'index.js' ? undefined : fileName.replace('.js', '')
@@ -11,6 +12,11 @@ module.exports = () => {
 
     const publish = (obj, action) => broker.publish('conclusions', obj, `recipes_api.v1.notifications.recipe.${action}`);
 
+    const makeItRecoverable = (err) => {
+      const recoverableErr = R.merge(err, { recoverable: true });
+      throw recoverableErr;
+    };
+
     const saveRecipe = (recipe) => {
       if (!recipe.id) return Promise.reject(new Error('Could not save recipe with no id'));
       return pickedStore.getRecipe(recipe.id)
@@ -19,7 +25,8 @@ module.exports = () => {
           logger.info(`Inserting new recipe with id ${recipe.id}`);
           return pickedStore.saveRecipe(recipe)
           .then(() => publish(recipe, 'saved'));
-        });
+        })
+        .catch(makeItRecoverable);
     };
 
     const updateRecipe = (current, update) => {
@@ -35,12 +42,14 @@ module.exports = () => {
       if (!id) return Promise.reject(new Error('Could not delete recipe with no id'));
       logger.info(`Deleting recipe with id ${id}`);
       return pickedStore.deleteRecipe(id)
-      .then(() => publish({ id }, 'deleted'));
+      .then(() => publish({ id }, 'deleted'))
+      .catch(makeItRecoverable);
     };
 
     const getRecipe = (id) => {
       if (!id) return Promise.reject(new Error('Could not get recipe with no id'));
-      return pickedStore.getRecipe(id);
+      return pickedStore.getRecipe(id)
+      .catch(makeItRecoverable);
     };
 
     const flush = () => {

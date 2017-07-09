@@ -69,9 +69,12 @@ const test = (store) => {
 
     const normalise = R.omit('_id');
 
-    it('should throw an error when saving a recipe with no id', () =>
+    it('should throw an irrecoverable error when saving a recipe with no id', () =>
       myStore.saveRecipe(R.omit('id',recipe))
-        .catch((err) => expect(err.message).to.equal('Could not save recipe with no id'))
+        .catch((err) => {
+          expect(err.message).to.equal('Could not save recipe with no id');
+          expect(err.recoverable).to.be(undefined);
+        })
     );
 
     it('should save a recipe when the recipe does not exist', () =>
