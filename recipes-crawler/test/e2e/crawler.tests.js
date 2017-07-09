@@ -92,6 +92,8 @@ describe('Crawls a source url to get recipes and publishes them', () => {
     ['publisher','ingredients','source_url','image_url',
      'social_rank','title','source_id','source'].forEach((field) => expect(recipe[field]).to.be.ok());
      expect(recipe.source).to.equal('F2F');
+     expect(recipe.id).to.be.a('string');
+     expect(recipe.version).to.be.greaterThan(0);
   };
 
   it('fails when search endpoint is not available', () => startSystem().then(() => shouldNotReceive()));

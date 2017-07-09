@@ -1,3 +1,4 @@
+const generateId = require('uuid/v1');
 const R = require('ramda');
 const debug = require('debug')('recipes-crawler');
 const request = require('superagent');
@@ -40,6 +41,8 @@ module.exports = () => {
       image_url,
       social_rank,
       title,
+      id: generateId(),
+      version: new Date().getTime(),
       source_id: recipe_id,
       source: 'F2F'
     });
