@@ -44,11 +44,6 @@ npm t
 - [Refactor: proxy store](https://github.com/feliun/microservices-school/commit/77b26f343442a9c45f1c029a462db54a776bfc15)
 - [Refactor: multiple automatic tests](https://github.com/feliun/microservices-school/commit/ef2eb0d9e000dc63fbab2dce4c761ef089c4d28f)
 
-** PART 2 **
-- [Subsystem to initialise subscriptions](https://github.com/feliun/microservices-school/commit/1e87161d2d073e9cd42505a59bb8618a1f72c261)
-- [Rabbit config to subscribe to crawler](https://github.com/feliun/microservices-school/commit/3711a1d05f96a31f8b373e4165be976b66fa6746)
-- [Subscribing to crawled recipes](https://github.com/feliun/microservices-school/commit/a5468ce5750a8c6b9c1351211467f12ff2c4d787)
-
 ## RabbitMQ Introduction
 
 ### Publishing conclusions
@@ -56,6 +51,15 @@ npm t
 - [Wiring up rabbitmq](https://github.com/feliun/microservices-school/commit/de850c4a9e45aef527e3b0fdb5a7c0d726a9f250)
 - [Publishing conclusions on every store action](https://github.com/feliun/microservices-school/commit/a466f9d5d08f510a18919ae3bd94f0965ffe1c59)
 - [Subscribing to conclusions to test published messages](https://github.com/feliun/microservices-school/commit/9035623f0742660f56430bfa5437a74e5cc61599)
+
+### Wiring up both services
+- [Subsystem to initialise subscriptions](https://github.com/feliun/microservices-school/commit/1e87161d2d073e9cd42505a59bb8618a1f72c261)
+- [Rabbit config to subscribe to crawler](https://github.com/feliun/microservices-school/commit/3711a1d05f96a31f8b373e4165be976b66fa6746)
+- [Subscribing to crawled recipes](https://github.com/feliun/microservices-school/commit/a5468ce5750a8c6b9c1351211467f12ff2c4d787)
+
+### Testing locally
+- Create your own spy queue and check mongo content
+- [First architecture problem: we need our own ids](https://github.com/feliun/microservices-school/commit/3ec8c312f7468689b537ef4d77aae214979a9773)
 
 # DevOps
 ## Continuos integration
