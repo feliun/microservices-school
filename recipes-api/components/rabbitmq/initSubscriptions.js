@@ -9,7 +9,7 @@ module.exports = () => {
           logger.info(`Just saved correctly recipe with id ${content.id}`);
         })
         .catch((error) => {
-          logger.logError(`There was an error digesting a recipe: ${error.message}, ${error.stack}`);
+          logger.error(`There was an error digesting a recipe: ${error.message}, ${error.stack}`);
           const recoveryStrategy = error.recoverable ? broker.config.recovery.deferred_retry : broker.config.recovery.dead_letter;
           ackOrNack(error, recoveryStrategy);
         });

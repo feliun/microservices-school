@@ -14,6 +14,7 @@ module.exports = () => {
     });
 
     const broker = {
+      config: rabbitmq.broker.config,
       publish,
       subscribe: rabbitmq.broker.subscribe,
       nuke: pify(rabbitmq.broker.nuke),
