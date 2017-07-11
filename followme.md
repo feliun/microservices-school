@@ -87,5 +87,6 @@ npm t
 - Setting up travis for our project
 - [Basic CI pipeline using Makefile: COMMIT, BUILD, TEST](https://github.com/feliun/microservices-school/commit/09ee8ba01300d70ef557694aa3d432c7a81708a6), outcome could be check [here](https://travis-ci.org/feliun/microservices-school/builds/252189365)
 - [Adding linting to qa process](https://github.com/feliun/microservices-school/commit/590035a42f7eab7ebca6dff67ac61e8d815da4b6) and [a small fix](https://github.com/feliun/microservices-school/commit/5427a38c41e6740cad25709d22331600ff91f864)
+- [Branding the artefact](https://github.com/feliun/microservices-school/commit/3d2e01d008d1e831220e756d441f721bb8ea7bf4)
 
 # Architecture principles
