@@ -82,6 +82,9 @@ npm t
 - [Errors handling - recoverable, irrecoverable, absolved](https://github.com/feliun/microservices-school/commit/caaf2b38121591366fbe799a9c40eb358705883e)
 
 # DevOps
+
 ## Continuos integration
+- Setting up travis for our project
+- [Basic CI pipeline using Makefile: COMMIT, BUILD, TEST](https://github.com/feliun/microservices-school/commit/09ee8ba01300d70ef557694aa3d432c7a81708a6), outcome could be check [here](https://travis-ci.org/feliun/microservices-school/builds/252189365)
 
 # Architecture principles
