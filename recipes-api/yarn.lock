@@ -1195,7 +1195,11 @@ lodash.once@^4.0.0:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.once/-/lodash.once-4.1.1.tgz#0dd3971213c7c56df880977d504c88fb471a97ac"
 
-lodash.set@^4.1.0, lodash.set@^4.2.0:
+lodash.reduce@^4.5.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/lodash.reduce/-/lodash.reduce-4.6.0.tgz#f1ab6b839299ad48f784abbf476596f03b914d3b"
+
+lodash.set@^4.1.0, lodash.set@^4.2.0, lodash.set@^4.3.0:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/lodash.set/-/lodash.set-4.3.2.tgz#d8757b1da807dde24816b0d6a84bea1a76230b23"
 
@@ -1226,13 +1230,15 @@ lru-cache@^4.0.2:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
 
-make-manifest@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/make-manifest/-/make-manifest-0.1.2.tgz#6453f4d9996bfc54a8cff1ab0898b9e02a6cf643"
+make-manifest@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/make-manifest/-/make-manifest-1.0.1.tgz#1d205ea714e0f180585292829618cebba4417f3b"
   dependencies:
     commander "^2.9.0"
     git-rev-sync "^1.6.0"
     lodash.merge "^4.4.0"
+    lodash.reduce "^4.5.0"
+    lodash.set "^4.3.0"
     remote-origin-url "^0.5.1"
 
 media-typer@0.3.0:

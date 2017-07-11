@@ -21,6 +21,7 @@ before_install:
 
 script:
   - make qa
+  - TRAVIS_BUILD_ID=$TRAVIS_BUILD_ID TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make brand
 
 matrix:
   include:
