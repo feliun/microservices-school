@@ -89,5 +89,7 @@ npm t
 - [Adding linting to qa process](https://github.com/feliun/microservices-school/commit/590035a42f7eab7ebca6dff67ac61e8d815da4b6) and [a small fix](https://github.com/feliun/microservices-school/commit/5427a38c41e6740cad25709d22331600ff91f864)
 - [Branding the artefact](https://github.com/feliun/microservices-school/commit/3d2e01d008d1e831220e756d441f721bb8ea7bf4)
 - [Building the docker container using Dockerfiles](https://github.com/feliun/microservices-school/commit/db5d8b1bef578817c6002f93afc07255e72f5968). Build output could be seen [here](https://travis-ci.org/feliun/microservices-school/builds/252595747)
+- Saving building time. Building a basic image from a [different repository](https://github.com/feliun/docker-nvm-yarn/commit/1dccb1a679d9a3aa71efe30cde3e24f1a6fcbb8e). Some instructions [here](https://github.com/feliun/docker-nvm-yarn#docker-nvm-yarn). The build output could be seen [here](https://quay.io/repository/feliun/docker-nvm-yarn/build/a5c5ecdd-fea8-436e-9898-dfb2ac60eeba). The image could be retrieved by doing `docker pull quay.io/feliun/docker-nvm-yarn`.
+
 
 # Architecture principles
