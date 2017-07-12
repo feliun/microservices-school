@@ -91,5 +91,6 @@ npm t
 - [Building the docker container using Dockerfiles](https://github.com/feliun/microservices-school/commit/db5d8b1bef578817c6002f93afc07255e72f5968). Build output could be seen [here](https://travis-ci.org/feliun/microservices-school/builds/252595747)
 - Saving building time. Building a basic image from a [different repository](https://github.com/feliun/docker-nvm-yarn/commit/1dccb1a679d9a3aa71efe30cde3e24f1a6fcbb8e). Some instructions [here](https://github.com/feliun/docker-nvm-yarn#docker-nvm-yarn). The build output could be seen [here](https://quay.io/repository/feliun/docker-nvm-yarn/build/a5c5ecdd-fea8-436e-9898-dfb2ac60eeba). The image could be retrieved by doing `docker pull quay.io/feliun/docker-nvm-yarn`.
 - [Simpler build as docker is in charge of installation, nvm management etc](https://github.com/feliun/microservices-school/commit/b7d8440b5525037b39a651aaf74714a5a04bc3e9)
+- [Still not ready for previous step. We need to replace tests as well first](https://github.com/feliun/microservices-school/commit/4eed25035e34c4589ac7f52dfcac64bb0f0734a9)
 
 # Architecture principles
