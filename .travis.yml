@@ -11,16 +11,14 @@ env:
 branches:
   only:
   - master
-before_install:
+install: true # build done inside the container now
+before_script:
 - cd ./$SERVICE
-- nvm install
-- nvm use
-- node --version
 - SERVICE=$SERVICE make ensure-dependencies
 script:
 - make qa
 - TRAVIS_BUILD_ID=$TRAVIS_BUILD_ID TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make brand
-- DOCKER_USERNAME=$DOCKER_USERNAME DOCKER_PASSWORD=$DOCKER_PASSWORD SERVICE=$SERVICE TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make build
+- DOCKER_USERNAME=$DOCKER_USERNAME DOCKER_PASSWORD=$DOCKER_PASSWORD SERVICE=$SERVICE TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make package
 matrix:
   include:
   - env: SERVICE=recipes-api
