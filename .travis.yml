@@ -1,9 +1,7 @@
 sudo: false
-cache: yarn
 language: node_js
 env:
   global:
-  - NODE_ENV='test'
   # DOCKER_USERNAME
   - secure: hnjhn1EoTzu/B72kMakHlzQIrAERbV6IcDtDJWTnGLxXeFwK/Dtyurqrvuc/dTzWff37Gss+VtMEk1i+jTtDdTYpYUpAuiBNY9bTjGuRTS3oyehrbOrmh7iQDZXf+HB8/Xf6r1WQ+j/Be8sdat6aFgmacIjHvS10ABPFWm77YQuOvpC66LU8Vt5PTmW4k/BWtWWcZSTQPLLd7kVkSEih+b3nhgW+JMiwwsbcTni6y3DTcW37NVqkaz0blZgMQTgK1TLK3DvZ+7MS3rvKaDysiV++kOkoLLiYMDs5aKQWPEmxmdXT8Ry4fpRGZ37Cv0zDlrP8EO54Cc14cDHEJenwGqjxorCrdWYpzQvzg5V1zUnSZRHpO+VPFHidPijvu/TieL1McsBJlOFh0ciI7nCGE5rg7f5F2rFCOUtnmbAmZdm7Nb/g1mTW22YGvMLq33Lv341luwyMY/cmsQoR4ewBwW/nRmp4c4NpteciO3Vk/JwcqrK2WGMF4rJAYATS1xi0oz5D0Swhn1luwYFsjbnpT0H2w0PFXgXSzWMyQg949EAmUPsCB9LQC5Vn11mFnceVRCa1QiI0q42yg0og3k0ZxqPtnB8JVuwxUX3Gog89s4DVc6WshyQiEWgclZbQxbt78PFCDSXnVpUiY7fl0+GDhjk6MLlQnYhRFSHkJJZ0/1Y=
   # DOCKER_PASSWORD
@@ -11,11 +9,9 @@ env:
 branches:
   only:
   - master
-before_install:
+install: true
+before_script:
 - cd ./$SERVICE
-- nvm install
-- nvm use
-- node --version
 - SERVICE=$SERVICE make ensure-dependencies
 script:
 - TRAVIS_BUILD_ID=$TRAVIS_BUILD_ID TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make brand

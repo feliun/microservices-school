@@ -83,7 +83,7 @@ npm t
 
 # DevOps
 
-## Continuos integration
+## Continuos integration (commit, build, test, brand, package, archive)
 - Setting up travis for our project
 - [Basic CI pipeline using Makefile: COMMIT, TEST](https://github.com/feliun/microservices-school/commit/09ee8ba01300d70ef557694aa3d432c7a81708a6), outcome could be check [here](https://travis-ci.org/feliun/microservices-school/builds/252189365)
 - [Adding linting to qa process](https://github.com/feliun/microservices-school/commit/590035a42f7eab7ebca6dff67ac61e8d815da4b6) and [a small fix](https://github.com/feliun/microservices-school/commit/5427a38c41e6740cad25709d22331600ff91f864)
@@ -92,5 +92,6 @@ npm t
 - Saving building time. Building a basic image from a [different repository](https://github.com/feliun/docker-nvm-yarn/commit/1dccb1a679d9a3aa71efe30cde3e24f1a6fcbb8e). Some instructions [here](https://github.com/feliun/docker-nvm-yarn#docker-nvm-yarn). The build output could be seen [here](https://quay.io/repository/feliun/docker-nvm-yarn/build/a5c5ecdd-fea8-436e-9898-dfb2ac60eeba). The image could be retrieved by doing `docker pull quay.io/feliun/docker-nvm-yarn`.
 - [Simpler build as docker is in charge of installation, nvm management etc](https://github.com/feliun/microservices-school/commit/b7d8440b5525037b39a651aaf74714a5a04bc3e9)
 - [Still not ready for previous step. We need to replace tests as well first](https://github.com/feliun/microservices-school/commit/4eed25035e34c4589ac7f52dfcac64bb0f0734a9)
+- Making it faster: running tests inside container [here](https://github.com/feliun/microservices-school/commit/29e0ee35fea4dd458d3a94d8a6748495685fcd7a) and [here](https://github.com/feliun/microservices-school/commit/e122515d7321c3f50f3851673d29db2e106a48a8). This could be seen [in this build](https://travis-ci.org/feliun/microservices-school/builds/253291881).
 
 # Architecture principles
