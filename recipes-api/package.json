@@ -8,6 +8,7 @@
     "server": "supervisor .",
     "test": "mocha test",
     "lint": "eslint .",
+    "qa": "npm run lint && npm run test",
     "docker": "bash -c '(docker network inspect local 2>&1 > /dev/null || docker network create local) && docker-compose --file docker-compose.yml pull && docker-compose --file docker-compose.yml up -d --force-recreate'",
     "precommit": "npm run lint",
     "prepush": "npm run test"

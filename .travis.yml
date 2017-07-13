@@ -18,10 +18,9 @@ before_install:
 - node --version
 - SERVICE=$SERVICE make ensure-dependencies
 script:
-- make qa #redundant as tests are now running inside container
 - TRAVIS_BUILD_ID=$TRAVIS_BUILD_ID TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make brand
 - SERVICE=$SERVICE TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make package
-- SERVICE=$SERVICE TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make test
+- SERVICE=$SERVICE TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make qa
 matrix:
   include:
   - env: SERVICE=recipes-api
