@@ -12,6 +12,9 @@ branches:
 install: true
 before_script:
 - cd ./$SERVICE
+- nvm install
+- nvm use
+- node --version
 - SERVICE=$SERVICE make ensure-dependencies
 script:
 - TRAVIS_BUILD_ID=$TRAVIS_BUILD_ID TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make brand
