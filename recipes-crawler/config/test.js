@@ -27,7 +27,7 @@ module.exports = {
       }
     },
     vhosts: {
-      '/': {
+      recipes: {
         queues: {
           'dead_letters:snoop': {},
           'retry:snoop': {},
