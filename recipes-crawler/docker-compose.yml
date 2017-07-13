@@ -9,9 +9,10 @@ services:
       - '27017:27017'
     command: "--smallfiles --logpath=/dev/null"
 
-  myrabbit:
+  rabbitmq:
     image: "rabbitmq:3-management"
-    hostname: "myrabbit"
+    container_name: rabbitmq
+    hostname: "rabbitmq"
     environment:
       RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
       RABBITMQ_DEFAULT_USER: "rabbitmq"
@@ -20,8 +21,6 @@ services:
     ports:
       - "15672:15672"
       - "5672:5672"
-    labels:
-      NAME: "micro-rabbit"
 
 networks:
   default:
