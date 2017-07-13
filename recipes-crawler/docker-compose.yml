@@ -2,19 +2,26 @@ version: '2'
 
 services:
 
-  rabbit1:
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - '27017:27017'
+    command: "--smallfiles --logpath=/dev/null"
+
+  myrabbit:
     image: "rabbitmq:3-management"
-    hostname: "rabbit1"
+    hostname: "myrabbit"
     environment:
       RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
       RABBITMQ_DEFAULT_USER: "rabbitmq"
       RABBITMQ_DEFAULT_PASS: "rabbitmq"
-      RABBITMQ_DEFAULT_VHOST: "/"
+      RABBITMQ_DEFAULT_VHOST: "recipes"
     ports:
       - "15672:15672"
       - "5672:5672"
     labels:
-      NAME: "rabbitmq1"
+      NAME: "micro-rabbit"
 
 networks:
   default:
