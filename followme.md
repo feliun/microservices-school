@@ -85,13 +85,15 @@ npm t
 
 ## Continuos integration (commit, build, test, brand, package, archive)
 - Setting up travis for our project
-- [Basic CI pipeline using Makefile: COMMIT, TEST](https://github.com/feliun/microservices-school/commit/09ee8ba01300d70ef557694aa3d432c7a81708a6), outcome could be check [here](https://travis-ci.org/feliun/microservices-school/builds/252189365)
+- [Basic CI pipeline using Makefile: COMMIT, BUILD, TEST](https://github.com/feliun/microservices-school/commit/09ee8ba01300d70ef557694aa3d432c7a81708a6), outcome could be check [here](https://travis-ci.org/feliun/microservices-school/builds/252189365)
 - [Adding linting to qa process](https://github.com/feliun/microservices-school/commit/590035a42f7eab7ebca6dff67ac61e8d815da4b6) and [a small fix](https://github.com/feliun/microservices-school/commit/5427a38c41e6740cad25709d22331600ff91f864)
-- [Branding the artefact](https://github.com/feliun/microservices-school/commit/3d2e01d008d1e831220e756d441f721bb8ea7bf4)
-- [Building the docker container using Dockerfiles](https://github.com/feliun/microservices-school/commit/db5d8b1bef578817c6002f93afc07255e72f5968). Build output could be seen [here](https://travis-ci.org/feliun/microservices-school/builds/252595747)
+- [Brand step](https://github.com/feliun/microservices-school/commit/3d2e01d008d1e831220e756d441f721bb8ea7bf4)
+- [Package step using Dockerfiles](https://github.com/feliun/microservices-school/commit/db5d8b1bef578817c6002f93afc07255e72f5968). Build output could be seen [here](https://travis-ci.org/feliun/microservices-school/builds/252595747)
 - Saving building time. Building a basic image from a [different repository](https://github.com/feliun/docker-nvm-yarn/commit/1dccb1a679d9a3aa71efe30cde3e24f1a6fcbb8e). Some instructions [here](https://github.com/feliun/docker-nvm-yarn#docker-nvm-yarn). The build output could be seen [here](https://quay.io/repository/feliun/docker-nvm-yarn/build/a5c5ecdd-fea8-436e-9898-dfb2ac60eeba). The image could be retrieved by doing `docker pull quay.io/feliun/docker-nvm-yarn`.
 - [Simpler build as docker is in charge of installation, nvm management etc](https://github.com/feliun/microservices-school/commit/b7d8440b5525037b39a651aaf74714a5a04bc3e9)
 - [Still not ready for previous step. We need to replace tests as well first](https://github.com/feliun/microservices-school/commit/4eed25035e34c4589ac7f52dfcac64bb0f0734a9)
 - Making it faster: running tests inside container [here](https://github.com/feliun/microservices-school/commit/29e0ee35fea4dd458d3a94d8a6748495685fcd7a) and [here](https://github.com/feliun/microservices-school/commit/e122515d7321c3f50f3851673d29db2e106a48a8). This could be seen [in this build](https://travis-ci.org/feliun/microservices-school/builds/253291881).
+- Fix for the brand step [here](https://github.com/feliun/microservices-school/commit/26f112be3b55e0c446dfc9c49b563a05be5f28f5) and [here](https://github.com/feliun/microservices-school/commit/444e35a168c819f5a6c447c676429ab9f38d4607).
+- Last step: [archiving the artefact](https://github.com/feliun/microservices-school/commit/6faae4e62912794ebd4a8d28059b6c869cb5efb6) and [enabling it in the build](https://github.com/feliun/microservices-school/commit/1f7ffb977a8d6b000b330aad67dc3d7c4039b1c6) and a [fix](https://github.com/feliun/microservices-school/commit/fadb27a833274ea5a4149d611ef64578c4b51503).Build could be checked [here](https://travis-ci.org/feliun/microservices-school/builds/253555540).
 
 # Architecture principles
