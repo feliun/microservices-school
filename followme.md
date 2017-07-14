@@ -97,5 +97,6 @@ npm t
 - Last step: [archiving the artefact](https://github.com/feliun/microservices-school/commit/6faae4e62912794ebd4a8d28059b6c869cb5efb6) and [enabling it in the build](https://github.com/feliun/microservices-school/commit/1f7ffb977a8d6b000b330aad67dc3d7c4039b1c6) and a [fix](https://github.com/feliun/microservices-school/commit/fadb27a833274ea5a4149d611ef64578c4b51503).Build could be checked [here](https://travis-ci.org/feliun/microservices-school/builds/253555540).
 - Checking containers [here](https://github.com/feliun/microservices-school/commit/dd1a2f57d9871aa21413c00dfcc56e06b6b2b65d) and [missing command here](https://github.com/feliun/microservices-school/commit/31c0cc8793a5b3063656beb8a07d9b5775cf4bcc).
 - [Fixing port allocation](https://github.com/feliun/microservices-school/commit/2cc5a893414a2061e5c92665ea67b93c80ef599c)
+- [Using build.json to test in CI, live.json to start the container](https://github.com/feliun/microservices-school/commit/bb9cf881cd9b8333303de115626773d28a79766f).
 
 # Architecture principles
