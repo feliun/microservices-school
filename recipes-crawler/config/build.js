@@ -3,8 +3,12 @@ module.exports = {
     transport: null
   },
   crawler: {
-    frequency: 7200000,
-    autostart: false
+    baseUrl: 'http://localhost:6000',
+    searchSuffix: '/api/search',
+    recipeSuffix: '/api/get',
+    autostart: true,
+    key: 'some_key',
+    page: 10
   },
   rabbitmq: {
     defaults: {
