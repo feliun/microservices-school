@@ -18,7 +18,7 @@ archive:
 	@docker ps
 	@CONTAINER_ID=$(shell docker ps --no-trunc | grep "$(SERVICE)" | awk '{print $$1}')
 	@docker commit $(CONTAINER_ID) $(SERVICE)
-	docker push $(DOCKER_HOST)/$(DOCKER_ACCOUNT/$(SERVICE)
+	docker push $(DOCKER_HOST)/$(DOCKER_ACCOUNT)/$(SERVICE)
 
 ensure-dependencies:
 	@npm run docker
