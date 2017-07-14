@@ -17,7 +17,7 @@ archive:
 	@docker run -d -p 3000:3000 --env SERVICE_ENV=live --name $(SERVICE) --network=local $(SERVICE):$(TRAVIS_BUILD_NUMBER)
 	@docker ps
 	@CONTAINER_ID=$(shell docker ps --no-trunc | grep "$(SERVICE)" | awk '{print $$1}')
-	@docker commit $(CONTAINER_ID) $(DOCKER_HOST)/$(DOCKER_ACCOUNT/$(SERVICE)
+	@docker commit $(CONTAINER_ID) $(SERVICE)
 	docker push $(DOCKER_HOST)/$(DOCKER_ACCOUNT/$(SERVICE)
 
 ensure-dependencies:
