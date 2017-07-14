@@ -20,5 +20,9 @@ archive:
 	docker commit $$CONTAINER_ID $(DOCKER_HOST)/$(DOCKER_ACCOUNT)/$(SERVICE)
 	docker push $(DOCKER_HOST)/$(DOCKER_ACCOUNT)/$(SERVICE)
 
+check:
+	@echo "Checking our container is up and running..."
+	@curl http://localhost:3000/__/manifest
+
 ensure-dependencies:
 	@npm run docker
