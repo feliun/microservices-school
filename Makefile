@@ -1,3 +1,6 @@
+DOCKER_HOST=quay.io
+DOCKER_ACCOUNT=feliun
+
 package:
 	@docker build --tag $(SERVICE):$(TRAVIS_BUILD_NUMBER) .
 	@docker images
@@ -10,7 +13,12 @@ qa:
 	@docker run --name $(SERVICE) --env SERVICE_ENV=build --rm --network=local --entrypoint npm $(SERVICE):$(TRAVIS_BUILD_NUMBER) run qa --
 
 archive:
-	@docker login -u=$(DOCKER_USERNAME) -p=$(DOCKER_PASSWORD) quay.io
+	@docker login -u=$(DOCKER_USERNAME) -p=$(DOCKER_PASSWORD) $(DOCKER_HOST)
+	@docker run -d -p 3000:3000 --env SERVICE_ENV=live --name $(SERVICE) --network=local $(SERVICE):$(TRAVIS_BUILD_NUMBER)
+	@docker ps
+	@CONTAINER_ID=$(shell docker ps --no-trunc | grep "$(SERVICE)" | awk '{print $$1}')
+	@docker commit $(CONTAINER_ID) $(DOCKER_HOST)/$(DOCKER_ACCOUNT/$(SERVICE)
+	docker push $(DOCKER_HOST)/$(DOCKER_ACCOUNT/$(SERVICE)
 
 ensure-dependencies:
 	@npm run docker
