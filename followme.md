@@ -98,5 +98,6 @@ npm t
 - Checking containers [here](https://github.com/feliun/microservices-school/commit/dd1a2f57d9871aa21413c00dfcc56e06b6b2b65d) and [missing command here](https://github.com/feliun/microservices-school/commit/31c0cc8793a5b3063656beb8a07d9b5775cf4bcc).
 - [Fixing port allocation](https://github.com/feliun/microservices-school/commit/2cc5a893414a2061e5c92665ea67b93c80ef599c)
 - [Using build.json to test in CI, live.json to start the container](https://github.com/feliun/microservices-school/commit/bb9cf881cd9b8333303de115626773d28a79766f) and another [fix](https://github.com/feliun/microservices-school/commit/0c8cf8027bae8b1bfb54536153af40f0e569dd70).
+- [Adding slack integration for notifications](https://github.com/feliun/microservices-school/commit/f94577d67c1d8706be2207ab84c98887d41ff150)
 
 # Architecture principles
