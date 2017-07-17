@@ -30,6 +30,9 @@ script:
 - make check
 before_deploy:
 - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY make prepare-deployment
+deploy:
+  skip_cleanup: true # preventing travis from deleting artefacts
+  - echo "Deployment will go here..."
 matrix:
   include:
   - env: SERVICE=recipes-api
