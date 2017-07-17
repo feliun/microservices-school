@@ -28,11 +28,9 @@ script:
 - SERVICE=$SERVICE TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make qa
 - SERVICE=$SERVICE TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER DOCKER_USERNAME=$DOCKER_USERNAME DOCKER_PASSWORD=$DOCKER_PASSWORD F2F_KEY=$F2F_KEY make archive
 - make check
-before_deploy:
+after_script:
 - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY make prepare-deployment
-deploy:
-  skip_cleanup: true # preventing travis from deleting artefacts
-  - echo "Deployment will go here..."
+- echo "Deployment will go here..."
 matrix:
   include:
   - env: SERVICE=recipes-api
