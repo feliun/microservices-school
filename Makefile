@@ -1,6 +1,8 @@
 DOCKER_HOST=quay.io
 DOCKER_ACCOUNT=feliun
 
+# CONTINUOS INTEGRATION
+
 package:
 	@docker build --tag $(SERVICE):$(TRAVIS_BUILD_NUMBER) .
 	@docker images
@@ -22,6 +24,12 @@ archive: start
 check:
 	@echo "Checking our $(SERVICE) container is up and running..."
 	@curl http://localhost:$(SERVICE_PORT)/__/manifest
+
+# CONTINUOS DEPLOYMENT
+prepare-deployment:
+	@curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+	@chmod +x ./kubectl
+	@sudo mv ./kubectl /usr/local/bin/kubectl
 
 ensure-dependencies:
 	@npm run docker

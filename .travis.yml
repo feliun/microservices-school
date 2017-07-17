@@ -1,4 +1,4 @@
-sudo: false
+sudo: true
 language: node_js
 env:
   global:
@@ -24,6 +24,9 @@ script:
 - SERVICE=$SERVICE TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make qa
 - SERVICE=$SERVICE TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER DOCKER_USERNAME=$DOCKER_USERNAME DOCKER_PASSWORD=$DOCKER_PASSWORD F2F_KEY=$F2F_KEY make archive
 - make check
+before_deploy:
+- make prepare-deployment
+
 matrix:
   include:
   - env: SERVICE=recipes-api
