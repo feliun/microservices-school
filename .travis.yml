@@ -21,6 +21,7 @@ before_script:
 - nvm install
 - nvm use
 - node --version
+- pip install --user awscli
 - SERVICE=$SERVICE make ensure-dependencies
 script:
 - TRAVIS_BUILD_ID=$TRAVIS_BUILD_ID TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make brand
