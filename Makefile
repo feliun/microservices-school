@@ -26,9 +26,13 @@ check:
 	@curl http://localhost:$(SERVICE_PORT)/__/manifest
 
 # CONTINUOS DEPLOYMENT
+ensure-cluster:
+	@./infra/create-cluster.sh
+
 prepare-deployment:
 	@export AWS_ACCESS_KEY_ID=$(AWS_ACCESS_KEY_ID) # AIM programmatic credentials
 	@export AWS_SECRET_ACCESS_KEY=$(AWS_SECRET_ACCESS_KEY)
+	@make ensure-cluster
 
 ensure-dependencies:
 	@npm run docker
