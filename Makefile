@@ -27,13 +27,8 @@ check:
 
 # CONTINUOS DEPLOYMENT
 prepare-deployment:
-	@curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-	@chmod +x ./kubectl
-	@sudo mv ./kubectl /usr/local/bin/kubectl
 	@export AWS_ACCESS_KEY_ID=$(AWS_ACCESS_KEY_ID) # AIM programmatic credentials
 	@export AWS_SECRET_ACCESS_KEY=$(AWS_SECRET_ACCESS_KEY)
-	@npm i aws-cli -g
-	@aws ec2 describe-instances # check connectivity
 
 ensure-dependencies:
 	@npm run docker
