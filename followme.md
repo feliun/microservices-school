@@ -100,4 +100,8 @@ npm t
 - [Using build.json to test in CI, live.json to start the container](https://github.com/feliun/microservices-school/commit/bb9cf881cd9b8333303de115626773d28a79766f) and another [fix](https://github.com/feliun/microservices-school/commit/0c8cf8027bae8b1bfb54536153af40f0e569dd70).
 - [Adding slack integration for notifications](https://github.com/feliun/microservices-school/commit/f94577d67c1d8706be2207ab84c98887d41ff150)
 
+## Continuos Deployment
+- Preparing live instance for mongo [here](https://github.com/feliun/microservices-school/commit/9a715f43cf8bfc534078b03b2ee13c07e5f8bc3f). Create your account here: https://mlab.com
+- Preparing live instance for rabbitmq [here](https://github.com/feliun/microservices-school/commit/e7fe1a99303dae575cf4601269f80a08b7582439). Create your account here: https://www.cloudamqp.com/
+
 # Architecture principles
