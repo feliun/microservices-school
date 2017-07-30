@@ -4,7 +4,9 @@ module.exports = {
     vhosts: {
       ysojkvfe: {
         connection: {
-          hostname: 'rabbitmq'
+          hostname: 'swan.rmq.cloudamqp.com',
+          user: 'ysojkvfe',
+          password: process.env.RABBIT_PWD || 'N/A'
         }
       }
     }
