@@ -27,7 +27,7 @@ module.exports = {
       }
     },
     vhosts: {
-      recipes: {
+      ysojkvfe: {
         connection: {
           hostname: 'rabbitmq'
         },

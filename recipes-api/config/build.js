@@ -3,7 +3,7 @@ module.exports = {
     transport: null
   },
   mongo: {
-    url: 'mongodb://mongo:27017/recipes'
+    url: 'mongodb://mongo:27017/ysojkvfe'
   },
   rabbitmq: {
     defaults: {
@@ -22,7 +22,7 @@ module.exports = {
       }
     },
     vhosts: {
-      recipes: {
+      ysojkvfe: {
         connection: {
           hostname: 'rabbitmq'
         },

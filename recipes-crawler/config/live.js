@@ -2,7 +2,7 @@ module.exports = {
   rabbitmq: {
     defaults: {},
     vhosts: {
-      recipes: {
+      ysojkvfe: {
         connection: {
           hostname: 'rabbitmq'
         }

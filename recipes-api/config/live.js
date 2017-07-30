@@ -1,13 +1,15 @@
 module.exports = {
   mongo: {
-    url: process.env.MONGO_URL || 'mongodb://mongo:27017/recipes'
+    url: process.env.MONGO_URL || 'mongodb://mongo:27017/ysojkvfe'
   },
   rabbitmq: {
     defaults: {},
     vhosts: {
-      recipes: {
+      ysojkvfe: {
         connection: {
-          hostname: 'rabbitmq'
+          hostname: 'swan.rmq.cloudamqp.com',
+          user: 'ysojkvfe',
+          password: process.env.RABBIT_PWD || 'N/A'
         }
       }
     }
