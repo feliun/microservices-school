@@ -1,6 +1,6 @@
 module.exports = {
   mongo: {
-    url: 'mongodb://mongo:27017/recipes'
+    url: process.env.MONGO_URL || 'mongodb://mongo:27017/recipes'
   },
   rabbitmq: {
     defaults: {},
