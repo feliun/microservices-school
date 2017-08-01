@@ -1,0 +1,15 @@
+{
+  "ImageId": "ami-d7b9a2b1",
+  "MaxCount": 1,
+  "MinCount": 1,
+  "DryRun": false,
+  "InstanceType": "t2.micro",
+  "KeyName": "micro-school-ec2",
+  "Placement": { "AvailabilityZone": "eu-west-1a"},
+  "Monitoring": {
+    "Enabled": true
+  },
+  "SecurityGroupIds": [
+    "launch-wizard-1"
+  ]
+}
