@@ -103,5 +103,6 @@ npm t
 ## Continuos Deployment
 - Preparing live instance for mongo [here](https://github.com/feliun/microservices-school/commit/9a715f43cf8bfc534078b03b2ee13c07e5f8bc3f). Create your account here: https://mlab.com
 - Preparing live instance for rabbitmq [here](https://github.com/feliun/microservices-school/commit/e7fe1a99303dae575cf4601269f80a08b7582439). Create your account here: https://www.cloudamqp.com/
+- [Preparing EC2 instance](https://github.com/feliun/microservices-school/commit/f456141230c4c50a16ff60f8059cbef2e5dac59f)
 
 # Architecture principles
