@@ -3,37 +3,58 @@
 // - AmazonS3FullAccess
 
 const R = require('ramda');
+const nodeSSH = require('node-ssh');
 const fs = require('fs');
 const { ec2, s3 } = require('./aws');
 const ec2Config = require('./config/ec2.json');
 
 const INSTANCE_NAME = 'recipes-ec2-instance';
+const EC2_USER = 'ec2-user';
 const S3_BUCKET = 'microservices-school-recipes';
-const OUTPUT_KEY = './micro-school-ec2.pem';
+const PEM_KEY_PATH = './micro-school-ec2.pem';
 const DELAY = 5000;
 
-const setup = (publicDnsName) => {
-  // TODO script ssh and add .pem file to s3
-  const instructions = [
-    `ssh -i ~/.ssh/${ec2Config.KeyName}.pem -o "StrictHostKeyChecking no" ec2-user@${publicDnsName}`,
-    'sudo yum update -y',
-    'sudo yum install -y docker',
-    'sudo service docker start',
-    'sudo usermod -a -G docker ec2-user', //no sudo needed
-    'docker info',
-    'docker ps',
-    'exit'
-  ];
-  console.log(instructions.join('\n'));
-  return downloadPemFile();
+const removeFile = (filePath) => new Promise((resolve, reject) => {
+  fs.unlink(filePath, (err) => (err ? reject(err) : resolve()));
+});
+
+const runSSH = (publicDns) => {
+  const ssh = new nodeSSH();
+  return ssh.connect({
+    host: publicDns,
+    username: EC2_USER,
+    privateKey: PEM_KEY_PATH
+  })
+  .then(() => 
+    ssh.execCommand('sudo yum update -y', { cwd:'.' })
+    .then(() => ssh.execCommand('sudo yum install -y docker', { cwd:'.' }))
+    .then(() => ssh.execCommand('sudo service docker start', { cwd:'.' }))
+    .then(() => ssh.execCommand('sudo usermod -a -G docker ec2-user', { cwd:'.' }))
+    .then(() => ssh.execCommand('docker ps', { cwd:'.' }))
+  )
+  .catch((e) => {
+    if (e.code !== 'ECONNREFUSED') throw e;
+    console.log('Instance not ready yet, retrying...');
+    return wait(DELAY).then(() => runSSH(publicDns));
+  });
 };
+
+const setup = (publicDnsName) =>
+  downloadPemFile()
+  .then(() => 
+    wait(DELAY)
+    .then(() => {
+      console.log('About to run setup commands via ssh...');
+      return runSSH(publicDnsName)
+      .then(() => removeFile(PEM_KEY_PATH));
+    }));
 
 const downloadPemFile = () => new Promise((resolve, reject) => {
   const s3Stream = s3.getObject({ Bucket: S3_BUCKET, Key: 'keys/micro-school-ec2.pem' }).createReadStream();
-  const fileStream = fs.createWriteStream(OUTPUT_KEY);
+  const fileStream = fs.createWriteStream(PEM_KEY_PATH);
   s3Stream.on('error', reject);
   fileStream.on('error', reject);
-  fileStream.on('close', () => resolve(OUTPUT_KEY));
+  fileStream.on('close', () => resolve(PEM_KEY_PATH));
   s3Stream.pipe(fileStream);
 });
 
@@ -64,26 +85,34 @@ const extractPublicDns = (Reservations) => Reservations
   && Reservations[0].Instances[0]
   && Reservations[0].Instances[0].PublicDnsName;
 
-const delay = (fn, ...args) => new Promise((resolve) => {
+const retry = (fn, ...args) => new Promise((resolve) => {
   setTimeout(() => fn(args).then(resolve), DELAY);
 });
+
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const findPublicDns = () => 
   checkInstances()
   .then(({ Reservations }) => {
     const publicDns = extractPublicDns(Reservations);
-    return publicDns ? publicDns : delay(findPublicDns);
+    return publicDns ? publicDns : retry(findPublicDns);
   });
 
 checkInstances()
 .then(({ Reservations }) => {
   if (Reservations.length > 0) {
     const publicDnsName = extractPublicDns(Reservations);
-    console.log('An EC2 instance has already been configured and it\'s running! Ensuring the following commands have been run:');
-    return setup(publicDnsName);
+    return console.log(`The EC2 ${publicDnsName} instance has already been configured and it is running!`);
   }
   return createInstance()
     .then(() => findPublicDns()
       .then(setup));
 })
-.catch(console.error);
+.then(() => {
+  console.log('DONE!!');
+  process.exit(0);
+})
+.catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
