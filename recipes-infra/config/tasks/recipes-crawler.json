@@ -9,12 +9,14 @@
         {
           "name": "F2F_KEY",
           "value": "set_me_please"
+        },
+        {
+          "name": "RABBIT_PWD",
+          "value": "set_me_please"
         }
       ],
       "name": "recipes-crawler",
-      "links": [
-        "rabbitmq"
-      ],
+      "links": [],
       "image": "quay.io/feliun/recipes-crawler:latest",
       "essential": true,
       "portMappings": [
@@ -25,41 +27,6 @@
       ],
       "memory": 500,
       "cpu": 10
-    },
-    {
-      "environment": [
-        {
-          "name": "RABBITMQ_ERLANG_COOKIE",
-          "value": "SWQOKODSQALRPCLNMEQG"
-        },
-        {
-          "name": "RABBITMQ_DEFAULT_USER",
-          "value": "rabbitmq"
-        },
-        {
-          "name": "RABBITMQ_DEFAULT_PASS",
-          "value": "rabbitmq"
-        },
-        {
-          "name": "RABBITMQ_DEFAULT_VHOST",
-          "value": "recipes"
-        }
-      ],
-      "name": "rabbitmq",
-      "image": "rabbitmq:3-management",
-      "portMappings": [
-        {
-          "containerPort": 15672,
-          "hostPort": 15672
-        },
-        {
-          "containerPort": 5672,
-          "hostPort": 5672
-        }
-      ],
-      "cpu": 10,
-      "memory": 500,
-      "essential": true
     }
  ],
  "family": "default"
