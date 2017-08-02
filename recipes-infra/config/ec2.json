@@ -13,6 +13,6 @@
     "Name": "deployment"
   },
   "SecurityGroupIds": [
-    "launch-wizard-1"
+    "ssh-and-http-from-anywhere"
   ]
 }

@@ -17,5 +17,6 @@ const pifyProtoFns = (obj, ...fns) => R.mergeAll(fns.map(fn => {
 }));
 
 const ec2 = pifyProtoFns(new AWS.EC2(), 'describeInstances', 'runInstances');
+const s3 = new AWS.S3();
 
-module.exports = { ec2 };
+module.exports = { ec2, s3 };
