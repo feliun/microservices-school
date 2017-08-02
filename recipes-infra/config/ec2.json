@@ -9,6 +9,9 @@
   "Monitoring": {
     "Enabled": true
   },
+  "IamInstanceProfile": {
+    "Name": "deployment"
+  },
   "SecurityGroupIds": [
     "launch-wizard-1"
   ]
