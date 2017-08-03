@@ -8,10 +8,7 @@ start:
 ensure-ec2-instance:
 	# this shouldn't be here - it's just a quick way to execute it only once at the beginning
 	@echo "Ensuring there is a EC2 instance available..."
-	@cd ../recipes-infra
 	@pwd
-	@node prepare-ec2-instance
-	@cd ../recipes-api
-	@pwd
+	@node ../recipes-infra/prepare-ec2-instance
 
 include ../Makefile
