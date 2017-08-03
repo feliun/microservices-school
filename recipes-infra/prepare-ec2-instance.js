@@ -3,13 +3,12 @@
 // - AmazonS3FullAccess
 
 const R = require('ramda');
-const nodeSSH = require('node-ssh');
 const fs = require('fs');
 const { ec2, s3 } = require('./aws');
+const { runInstallation } = require('./ssh');
 const ec2Config = require('./config/ec2.json');
 
 const INSTANCE_NAME = 'recipes-ec2-instance';
-const EC2_USER = 'ec2-user';
 const S3_BUCKET = 'microservices-school-recipes';
 const PEM_KEY_PATH = './micro-school-ec2.pem';
 const DELAY = 5000;
@@ -18,34 +17,13 @@ const removeFile = (filePath) => new Promise((resolve, reject) => {
   fs.unlink(filePath, (err) => (err ? reject(err) : resolve()));
 });
 
-const runSSH = (publicDns) => {
-  const ssh = new nodeSSH();
-  return ssh.connect({
-    host: publicDns,
-    username: EC2_USER,
-    privateKey: PEM_KEY_PATH
-  })
-  .then(() => 
-    ssh.execCommand('sudo yum update -y', { cwd:'.' })
-    .then(() => ssh.execCommand('sudo yum install -y docker', { cwd:'.' }))
-    .then(() => ssh.execCommand('sudo service docker start', { cwd:'.' }))
-    .then(() => ssh.execCommand('sudo usermod -a -G docker ec2-user', { cwd:'.' }))
-    .then(() => ssh.execCommand('docker ps', { cwd:'.' }))
-  )
-  .catch((e) => {
-    if (e.code !== 'ECONNREFUSED') throw e;
-    console.log('Instance not ready yet, retrying...');
-    return wait(DELAY).then(() => runSSH(publicDns));
-  });
-};
-
 const setup = (publicDnsName) =>
   downloadPemFile()
   .then(() => 
     wait(DELAY)
     .then(() => {
       console.log('About to run setup commands via ssh...');
-      return runSSH(publicDnsName)
+      return runInstallation(publicDnsName, PEM_KEY_PATH)
       .then(() => removeFile(PEM_KEY_PATH));
     }));
 
@@ -105,7 +83,8 @@ checkInstances()
     return console.log(`The EC2 ${publicDnsName} instance has already been configured and it is running!`);
   }
   return createInstance()
-    .then(() => findPublicDns()
+    .then(() => 
+      findPublicDns()
       .then(setup));
 })
 .then(() => {
