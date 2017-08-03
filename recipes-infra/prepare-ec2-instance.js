@@ -3,14 +3,16 @@
 // - AmazonS3FullAccess
 
 const R = require('ramda');
+const { join } = require('path');
 const fs = require('fs');
 const { ec2, s3 } = require('./aws');
-const { runInstallation } = require('./ssh');
+const { runInstallation } = require('./lib/ssh');
 const ec2Config = require('./config/ec2.json');
 
 const INSTANCE_NAME = 'recipes-ec2-instance';
 const S3_BUCKET = 'microservices-school-recipes';
-const PEM_KEY_PATH = './micro-school-ec2.pem';
+const PEM_KEY_PATH = join(__dirname, 'micro-school-ec2.pem');
+
 const DELAY = 5000;
 
 const removeFile = (filePath) => new Promise((resolve, reject) => {
