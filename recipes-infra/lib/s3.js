@@ -12,6 +12,22 @@ const downloadPemFile = (pemKeyPath) => new Promise((resolve, reject) => {
   s3Stream.pipe(fileStream);
 });
 
+const registerInstance = (publicDns) => {
+  const registry = {
+    creationDate: new Date(),
+    publicDns
+  };
+  const params = {
+    Body: JSON.stringify(registry), 
+    Bucket: S3_BUCKET, 
+    Key: 'instances-registry'
+  };
+  return new Promise((resolve, reject) => {
+    s3.putObject(params, (err) => (err ? reject(err) : resolve()));
+  });
+};
+
 module.exports = {
-  downloadPemFile
+  downloadPemFile,
+  registerInstance
 };

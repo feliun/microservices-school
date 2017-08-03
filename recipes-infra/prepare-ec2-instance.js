@@ -1,7 +1,7 @@
 const R = require('ramda');
 const { join } = require('path');
 
-const { downloadPemFile } = require('./lib/s3');
+const { downloadPemFile, registerInstance } = require('./lib/s3');
 const { runInstallation } = require('./lib/ssh');
 const { checkInstances, createInstance, extractPublicDns, findPublicDns } = require('./lib/ec2');
 const { removeFile, wait } = require('./lib/utils');
@@ -17,7 +17,8 @@ const setup = (publicDnsName) =>
     .then(() => {
       console.log('About to run setup commands via ssh...');
       return runInstallation(publicDnsName, PEM_KEY_PATH)
-      .then(() => removeFile(PEM_KEY_PATH));
+      .then(() => removeFile(PEM_KEY_PATH))
+      .then(() => registerInstance(publicDnsName));
     }));
 
 checkInstances()
