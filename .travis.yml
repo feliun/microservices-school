@@ -19,6 +19,8 @@ env:
 branches:
   only:
   - master
+before_install:
+- AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY make ensure-ecs-instance
 install: true
 before_script:
 - cd ./$SERVICE
@@ -34,7 +36,6 @@ script:
 - SERVICE=$SERVICE TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER DOCKER_USERNAME=$DOCKER_USERNAME DOCKER_PASSWORD=$DOCKER_PASSWORD F2F_KEY=$F2F_KEY MONGO_URL=$MONGO_URL RABBIT_PWD=$RABBIT_PWD make archive
 - make check
 after_script:
-- AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY make prepare-deployment
 - echo "Deployment will go here..."
 matrix:
   include:
