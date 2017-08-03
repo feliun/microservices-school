@@ -27,7 +27,3 @@ check:
 
 ensure-dependencies:
 	@npm run docker
-
-# CONTINUOS DEPLOYMENT
-infra:
-	git checkout master && git pull && git checkout infra && git pull && git merge master && git push && git checkout master
