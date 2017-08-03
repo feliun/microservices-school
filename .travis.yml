@@ -24,7 +24,9 @@ branches:
 before_install:
 - echo "Ensuring ec2 instance..."
 - cd recipes-infra
-- nvm install && nvm use && yarn
+- nvm install 
+- nvm use
+- yarn
 - node prepare-ec2-instance
 - cd ..
 - pwd
