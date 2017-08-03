@@ -1,4 +1,5 @@
 ensure-dependencies:
+	@npm install
 	@node prepare-ec2-instance
 
 brand:
