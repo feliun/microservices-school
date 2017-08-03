@@ -13,7 +13,7 @@
   "author": "GuideSmiths Ltd",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.92.0",
+    "aws-sdk": "^2.94.0",
     "node-ssh": "^4.2.3",
     "pify": "^3.0.0",
     "ramda": "^0.24.1"
