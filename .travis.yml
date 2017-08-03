@@ -20,6 +20,7 @@ branches:
   only:
   - master
 before_install:
+- npm i aws-sdk -g && npm i node-ssh -g && npm i pify -g && npm i ramda -g # used to run recipes-infra scripts
 - cd ./$SERVICE
 - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY make ensure-ec2-instance
 install: true

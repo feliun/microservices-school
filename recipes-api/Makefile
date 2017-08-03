@@ -10,8 +10,6 @@ ensure-ec2-instance:
 	@echo "Ensuring there is a EC2 instance available..."
 	@cd ../recipes-infra
 	@pwd
-	@nvm install && nvm use && yarn
-	@pwd
 	@node prepare-ec2-instance
 	@cd ../recipes-api
 	@pwd
