@@ -1,0 +1,10 @@
+{
+  "name": "microservices-school",
+  "version": "0.0.1",
+  "description": "microservices-school",
+  "scripts": {
+    "infra": "make infra"
+  },
+  "author": "GuideSmiths Ltd",
+  "license": "ISC"
+}

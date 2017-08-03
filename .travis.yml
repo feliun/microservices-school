@@ -19,13 +19,24 @@ env:
 branches:
   only:
   - master
+  - infra
+
 before_install:
+- echo "Ensuring ec2 instance..."
+- cd recipes-infra
+- nvm install && nvm use && yarn
+- node prepare-ec2-instance
+- cd ..
+- pwd
+  on:
+    branch: infra
+
+install: true
+before_script:
 - cd ./$SERVICE
 - nvm install
 - nvm use
 - node --version
-install: true
-before_script:
 - SERVICE=$SERVICE make ensure-dependencies
 script:
 - TRAVIS_BUILD_ID=$TRAVIS_BUILD_ID TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make brand
