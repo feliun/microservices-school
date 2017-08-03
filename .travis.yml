@@ -26,7 +26,7 @@ before_script:
 - nvm install
 - nvm use
 - node --version
-- SERVICE=$SERVICE make ensure-dependencies
+- SERVICE=$SERVICE AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY make ensure-dependencies
 script:
 - TRAVIS_BUILD_ID=$TRAVIS_BUILD_ID TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make brand
 - SERVICE=$SERVICE TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make package
@@ -37,6 +37,7 @@ after_script:
 - echo "Deployment will go here..."
 matrix:
   include:
+  - env: SERVICE=recipes-infra
   - env: SERVICE=recipes-api
     services:
     - docker
