@@ -5,9 +5,10 @@
 const R = require('ramda');
 const { join } = require('path');
 const fs = require('fs');
-const { ec2, s3 } = require('./aws');
-const { runInstallation } = require('./lib/ssh');
+const { ec2 } = require('./lib/aws');
 const ec2Config = require('./config/ec2.json');
+const { downloadPemFile } = require('./lib/s3');
+const { runInstallation } = require('./lib/ssh');
 
 const INSTANCE_NAME = 'recipes-ec2-instance';
 const S3_BUCKET = 'microservices-school-recipes';
@@ -20,7 +21,7 @@ const removeFile = (filePath) => new Promise((resolve, reject) => {
 });
 
 const setup = (publicDnsName) =>
-  downloadPemFile()
+  downloadPemFile(PEM_KEY_PATH)
   .then(() => 
     wait(DELAY)
     .then(() => {
@@ -28,15 +29,6 @@ const setup = (publicDnsName) =>
       return runInstallation(publicDnsName, PEM_KEY_PATH)
       .then(() => removeFile(PEM_KEY_PATH));
     }));
-
-const downloadPemFile = () => new Promise((resolve, reject) => {
-  const s3Stream = s3.getObject({ Bucket: S3_BUCKET, Key: 'keys/micro-school-ec2.pem' }).createReadStream();
-  const fileStream = fs.createWriteStream(PEM_KEY_PATH);
-  s3Stream.on('error', reject);
-  fileStream.on('error', reject);
-  fileStream.on('close', () => resolve(PEM_KEY_PATH));
-  s3Stream.pipe(fileStream);
-});
 
 const checkInstances = () => {
   console.log('Checking running instances...');
@@ -82,7 +74,8 @@ checkInstances()
 .then(({ Reservations }) => {
   if (Reservations.length > 0) {
     const publicDnsName = extractPublicDns(Reservations);
-    return console.log(`The EC2 ${publicDnsName} instance has already been configured and it is running!`);
+    console.log(`The EC2 ${publicDnsName} instance has already been configured and it is running!`);
+    return setup(publicDnsName)
   }
   return createInstance()
     .then(() => 
