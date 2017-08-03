@@ -4,6 +4,7 @@
 
 const R = require('ramda');
 const { ec2 } = require('../lib/aws');
+const { retry } = require('../lib/utils');
 const ec2Config = require('../config/ec2.json');
 
 const INSTANCE_NAME = 'recipes-ec2-instance';
@@ -37,15 +38,11 @@ const extractPublicDns = (Reservations) => Reservations
   && Reservations[0].Instances[0]
   && Reservations[0].Instances[0].PublicDnsName;
 
-const retry = (fn, ...args) => new Promise((resolve) => {
-  setTimeout(() => fn(args).then(resolve), DELAY);
-});
-
 const findPublicDns = () => 
   checkInstances()
   .then(({ Reservations }) => {
     const publicDns = extractPublicDns(Reservations);
-    return publicDns ? publicDns : retry(findPublicDns);
+    return publicDns ? publicDns : retry(DELAY, findPublicDns);
   });
 
 module.exports = {
