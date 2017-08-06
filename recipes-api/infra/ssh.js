@@ -1,12 +1,23 @@
+const R = require('ramda');
+const { join } = require('path');
 const nodeSSH = require('node-ssh');
 
 const EC2_USER = 'ec2-user';
+const ENV_VARS = ['MONGO_URL', 'RABBIT_PWD', 'SERVICE', 'F2F_KEY'];
 
-const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const replaceServiceContainer = (publicDns, pemKeyPath, environment) => {
 
-const DELAY = 5000;
+  const applyEnv = () => {
+    const usefulVars = R.intersection(R.keys(environment), ENV_VARS);
+    return R.reduce((acc, key) => `${acc} ${key}=${environment[key]}`, '', usefulVars);
+  };
 
-const runInstallation = (publicDns, pemKeyPath) => {
+  const copyRunScripts = () =>
+    ssh.putFiles([{ local: join(__dirname, 'deploy.sh'), remote: './deploy.sh' }])
+      .then(() => ssh.execCommand('chmod +x deploy.sh', { cwd:'.' }));
+
+  const { SERVICE } = environment;
+
   const ssh = new nodeSSH();
   return ssh.connect({
     host: publicDns,
@@ -14,19 +25,15 @@ const runInstallation = (publicDns, pemKeyPath) => {
     privateKey: pemKeyPath
   })
   .then(() =>
-    ssh.execCommand('sudo yum update -y', { cwd:'.' })
-    .then(() => ssh.execCommand('sudo yum install -y docker', { cwd:'.' }))
-    .then(() => ssh.execCommand('sudo service docker start', { cwd:'.' }))
-    .then(() => ssh.execCommand('sudo usermod -a -G docker ec2-user', { cwd:'.' }))
+    ssh.execCommand(`docker stop ${SERVICE} && docker rm ${SERVICE}`, { cwd:'.' })
+    .then(() => copyRunScripts())
+    .then(() => ssh.execCommand(`${applyEnv()} ./deploy.sh`, { cwd:'.' }))
     .then(() => ssh.execCommand('docker ps', { cwd:'.' }))
-  )
-  .catch((e) => {
-    if (e.code !== 'ECONNREFUSED') throw e;
-    console.log('Instance not ready yet, retrying...');
-    return wait(DELAY).then(() => runInstallation(publicDns, pemKeyPath));
-  });
+    .then(({ stdout }) => console.log(stdout))
+    // TODO curl up to retries - curl http://localhost:3000/__/manifest
+  );
 };
 
 module.exports = {
-  runInstallation
+  replaceServiceContainer
 }
