@@ -308,10 +308,8 @@ commander@2.3.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.3.0.tgz#fd430e889832ec353b9acd1de217c11cb3eef873"
 
 commander@^2.9.0:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-2.9.0.tgz#9c99094176e12240cb22d6c5146098400fe0f7d4"
-  dependencies:
-    graceful-readlink ">= 1.0.0"
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.11.0.tgz#157152fd1e7a6c8d98a5b715cf376df928004563"
 
 component-emitter@^1.2.0:
   version "1.2.1"
@@ -895,10 +893,6 @@ globby@^5.0.0:
 graceful-fs@4.1.11, graceful-fs@^4.1.2:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
-
-"graceful-readlink@>= 1.0.0":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
 
 growl@1.9.2:
   version "1.9.2"
@@ -1549,7 +1543,7 @@ parse-duration@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/parse-duration/-/parse-duration-0.1.1.tgz#13114ddc9891c1ecd280036244554de43647a226"
 
-parse-git-config@^1.0.2:
+parse-git-config@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/parse-git-config/-/parse-git-config-1.1.1.tgz#d3a9984317132f57398712bba438e129590ddf8c"
   dependencies:
@@ -1810,10 +1804,10 @@ regex-cache@^0.4.2:
     is-primitive "^2.0.0"
 
 remote-origin-url@^0.5.1:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/remote-origin-url/-/remote-origin-url-0.5.2.tgz#e8dd2e188b4f2c215f0127e76ab81b14f38eb748"
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/remote-origin-url/-/remote-origin-url-0.5.3.tgz#b9fc6ced2c826690d0b07218b2b8c17fcec88e87"
   dependencies:
-    parse-git-config "^1.0.2"
+    parse-git-config "^1.1.1"
 
 remove-trailing-separator@^1.0.1:
   version "1.0.1"
