@@ -21,12 +21,12 @@ branches:
   - master
 
 install: # needed to run deployment scripts
+  - cd ./$SERVICE
+  - nvm install
+  - nvm use
+  - node --version
   - npm install --only=production
 before_script:
-- cd ./$SERVICE
-- nvm install
-- nvm use
-- node --version
 - SERVICE=$SERVICE AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY make ensure-dependencies
 script:
 - TRAVIS_BUILD_ID=$TRAVIS_BUILD_ID TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make brand
