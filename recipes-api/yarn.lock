@@ -181,9 +181,9 @@ boom@^3.2.2:
   dependencies:
     hoek "4.x.x"
 
-boom@^5.1.0:
-  version "5.1.0"
-  resolved "http://registry.yarnpkg.com/boom/-/boom-5.1.0.tgz#0308fa8e924cd6d42d9c3bf4883bdc98f0e71df8"
+boom@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/boom/-/boom-5.2.0.tgz#5dd9da6ee3a5f302077436290cb717d3f4a54e02"
   dependencies:
     hoek "4.x.x"
 
