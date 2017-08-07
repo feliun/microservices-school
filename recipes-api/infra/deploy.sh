@@ -1,6 +1,3 @@
 #!/bin/bash
-SERVICE_PORT=3000
-DOCKER_HOST=quay.io
-DOCKER_ACCOUNT=feliun
 
-docker run -d -p $SERVICE_PORT:$SERVICE_PORT -e SERVICE_ENV=live -e MONGO_URL=$MONGO_URL -e RABBIT_PWD=$RABBIT_PWD --name $SERVICE $DOCKER_HOST/$DOCKER_ACCOUNT/$SERVICE:latest
+docker run -d -p 3000:3000 -e SERVICE_ENV=live -e MONGO_URL=$MONGO_URL -e RABBIT_PWD=$RABBIT_PWD --name recipes-api quay.io/feliun/recipes-api:latest

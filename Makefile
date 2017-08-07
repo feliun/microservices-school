@@ -27,3 +27,16 @@ check:
 
 ensure-dependencies:
 	@npm run docker
+
+# CONTINUOUS DEPLOYMENT
+
+copy-infra:
+	@echo "Copying infra tools inside service $(SERVICE)"
+	@cp -r ../recipes-infra/lib ./infra
+	@cp ../recipes-infra/deploy.js ./infra/
+
+deploy: copy-infra
+	@SERVICE_PORT=$(SERVICE_PORT) node ./infra/deploy.js
+	@echo "Cleaning up..."
+	@rm ./infra/deploy.js
+	@rm -rf ./infra/lib

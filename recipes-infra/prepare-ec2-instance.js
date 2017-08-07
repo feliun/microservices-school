@@ -1,4 +1,3 @@
-const R = require('ramda');
 const { join } = require('path');
 
 const { downloadPemFile, registerInstance } = require('./lib/s3');
@@ -12,7 +11,7 @@ const DELAY = 5000;
 
 const setup = (publicDnsName) =>
   downloadPemFile(PEM_KEY_PATH)
-  .then(() => 
+  .then(() =>
     wait(DELAY)
     .then(() => {
       console.log('About to run setup commands via ssh...');
@@ -25,9 +24,9 @@ checkInstances()
 .then(({ Reservations }) => {
   if (Reservations.length > 0) return extractPublicDns(Reservations);
   return createInstance()
-    .then(() => 
+    .then(() =>
       findPublicDns()
-      .then((publicDns) => 
+      .then((publicDns) =>
         setup(publicDns)
         .then(() => publicDns)
       )
