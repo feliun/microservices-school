@@ -20,7 +20,8 @@ branches:
   only:
   - master
 
-install: true
+install: # needed to run deployment scripts
+  - npm install --only=production
 before_script:
 - cd ./$SERVICE
 - nvm install

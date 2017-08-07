@@ -31,7 +31,6 @@ ensure-dependencies:
 # CONTINUOUS DEPLOYMENT
 
 copy-infra:
-	@ls -latr node_modules | grep ramda
 	@echo "Copying infra tools inside service $(SERVICE)"
 	@cp -r ../recipes-infra/lib ./infra
 	@cp ../recipes-infra/deploy.js ./infra/
