@@ -39,13 +39,10 @@ after_script:
 matrix:
   include:
   - env: SERVICE=recipes-infra
-    fast_finish: true
   - env: SERVICE=recipes-api
-    fast_finish: true
     services:
     - docker
   - env: SERVICE=recipes-crawler
-    fast_finish: true
     services:
     - docker
 notifications:
