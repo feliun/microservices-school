@@ -104,5 +104,14 @@ npm t
 - Preparing live instance for mongo [here](https://github.com/feliun/microservices-school/commit/9a715f43cf8bfc534078b03b2ee13c07e5f8bc3f). Create your account here: https://mlab.com
 - Preparing live instance for rabbitmq [here](https://github.com/feliun/microservices-school/commit/e7fe1a99303dae575cf4601269f80a08b7582439). Create your account here: https://www.cloudamqp.com/
 - [Preparing EC2 instance](https://github.com/feliun/microservices-school/commit/f456141230c4c50a16ff60f8059cbef2e5dac59f)
+- Deployment starts [here](https://github.com/feliun/microservices-school/blob/master/.travis.yml#L38). This uses [this main script](https://github.com/feliun/microservices-school/blob/master/Makefile#L38-L42) and [a file like this on each project(https://github.com/feliun/microservices-school/blob/master/recipes-api/infra/deploy.sh).
+
+## Check-ins after deployment
+1. Create a spy queue
+2. Enter docker container for recipes-crawler `docker exec -it recipes-crawler bash`
+3. Change config so the service starts immediately
+4. Check the spy queue
+5. Check the mongo collection
+6. Enter docker container for recipes-crawler and check logs in /var/log/supervisor
 
 # Architecture principles
