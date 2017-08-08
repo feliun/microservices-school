@@ -8,7 +8,10 @@ if (!process.env.SERVICE) throw new Error("No SERVICE environment variable has b
 const PEM_KEY_PATH = join(__dirname, 'micro-school-ec2.pem');
 const INSTANCE_REGISTRY_PATH = join(__dirname, 'instances-registry.json');
 
-const cleanUp = () => Promise.all([ removeFile(PEM_KEY_PATH), removeFile(INSTANCE_REGISTRY_PATH) ]);
+const cleanUp = () => {
+  console.log('Cleaning up...');
+  return Promise.all([ removeFile(PEM_KEY_PATH), removeFile(INSTANCE_REGISTRY_PATH) ]);
+};
 
 Promise.all([
   downloadPemFile(PEM_KEY_PATH),
@@ -16,6 +19,7 @@ Promise.all([
 ])
   .then((result) => {
     const { publicDns } = require(INSTANCE_REGISTRY_PATH);
+    console.log(`All needed files dowloaded. Replacing service docker container in ${publicDns}...`);
     return replaceServiceContainer(publicDns, PEM_KEY_PATH, process.env)
       .then(() => cleanUp())
       .then(() => {

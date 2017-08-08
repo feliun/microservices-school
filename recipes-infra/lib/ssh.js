@@ -44,7 +44,11 @@ const replaceServiceContainer = (publicDns, pemKeyPath, environment) => {
 
   const checkStability = (attempts = 0) => {
     return wait(MIN_STARTUP_TIME)
-      .then(() => ssh.execCommand(`curl http://localhost:${environment.SERVICE_PORT}/__/manifest`, { cwd:'.' }))
+      .then(() => {
+        const checkUrl = `curl http://localhost:${environment.SERVICE_PORT}/__/manifest`;
+        console.log(`Checking url: ${checkUrl}...`);
+        return ssh.execCommand(checkUrl, { cwd:'.' });
+      })
       .then((res) => {
         if (!res.stdout) throw new Error(`Service ${SERVICE} not available yet`);
         const response = JSON.parse(res.stdout);
@@ -65,8 +69,14 @@ const replaceServiceContainer = (publicDns, pemKeyPath, environment) => {
   })
   .then(() =>
     ssh.execCommand(`docker stop ${SERVICE} && docker rm ${SERVICE}`, { cwd:'.' })
-    .then(() => copyRunScripts())
-    .then(() => ssh.execCommand(`${applyEnv()} ./deploy.sh`, { cwd:'.' }))
+    .then(() => {
+      console.log('Coyping run scripts...');
+      return copyRunScripts();
+    })
+    .then(() => {
+      console.log('Deploying service...');
+      return ssh.execCommand(`${applyEnv()} ./deploy.sh`, { cwd:'.' });
+    })
     .then(({ stdout }) => console.log(stdout))
     .then(() => checkStability())
   );
