@@ -5,7 +5,8 @@ const strategies = require('require-all')({
 
 module.exports = () => {
   const start = ({ config }, cb) => {
-    const { generate } = strategies[config];
+    const { strategy, options } = config;
+    const { generate } = strategies[strategy](options);
     cb(null, { generate });
   };
 
