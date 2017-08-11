@@ -1,6 +1,8 @@
 const System = require('systemic');
 const adminRoutes = require('./admin-routes');
+const apiRoutes = require('./api-routes');
 
 module.exports = new System({ name: 'routes' })
+  .add('routes.api', apiRoutes()).dependsOn('config', 'logger', 'app', 'middleware.prepper', 'manifest', 'generator')
   .add('routes.admin', adminRoutes()).dependsOn('config', 'logger', 'app', 'middleware.prepper', 'manifest')
-  .add('routes').dependsOn('routes.admin');
+  .add('routes').dependsOn('routes.admin', 'routes.api');
