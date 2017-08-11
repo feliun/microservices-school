@@ -4,10 +4,13 @@ const strategies = require('require-all')({
 });
 
 module.exports = () => {
-  const start = ({ config }, cb) => {
+  const start = ({ config, logger }, cb) => {
     const { strategy, options } = config;
-    const { generate } = strategies[strategy](options);
-    cb(null, { generate });
+    const init = strategies[strategy];
+    if (!init) return cb(`No generator strategy for ${strategy}`);
+    init(options, logger)
+      .then((generate) => cb(null, { generate }))
+      .catch(cb);
   };
 
   return { start };

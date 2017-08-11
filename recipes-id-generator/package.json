@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "R": "0.0.1",
+    "block-sequence": "^1.0.0",
+    "block-sequence-mongo": "^1.1.0",
     "body-parser": "^1.15.2",
     "boom": "^3.2.2",
     "bunyan": "^1.8.5",

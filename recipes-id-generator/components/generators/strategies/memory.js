@@ -4,4 +4,4 @@ const generate = () =>
   Promise.resolve(currentId)
     .then(() => currentId++);
 
-module.exports = (options) => ({ generate });
+module.exports = () => Promise.resolve(generate);

@@ -4,8 +4,26 @@ module.exports = {
     port: 3002
   },
   generator: {
-    strategy: 'memory',
-    options: {}
+    strategy: 'block',
+    options: {
+      size: 1,
+      block: {
+        prime: false,
+        size: 100,
+        retry: {
+          limit: 100,
+          interval: 100
+        },
+        sequence: {
+          name: "recipes",
+          value: 0,
+          metadata: {
+            environment: process.env.SERVICE_ENV
+          }
+        },
+        template: "{{=sequence.name}}-{{=id}}-{{=sequence.metadata.environment}}"
+      }
+    }
   },
   routes: {
     proxy: {
