@@ -15,11 +15,9 @@ module.exports = (options) => new Promise((resolve, reject) => {
     });
   });
 
-  // TODO move to config
-  const url = 'mongodb://127.0.0.1/recipes';
   const mongoOptions = {};
 
-  init({ url, options: mongoOptions }, (err, driver) => {
+  init({ url: options.url, options: mongoOptions }, (err, driver) => {
     if (err) return reject(err);
     driver.ensure({ name }, (err, sequence) => {
       if (err) return reject(err);

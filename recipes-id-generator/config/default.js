@@ -7,6 +7,7 @@ module.exports = {
     strategy: 'block',
     options: {
       size: 1,
+      url: 'mongodb://127.0.0.1/recipes',
       block: {
         prime: false,
         size: 1,
