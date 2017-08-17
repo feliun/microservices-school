@@ -46,7 +46,7 @@
     "optimist": "^0.6.1",
     "optional": "^0.1.3",
     "pify": "^3.0.0",
-    "prepper": "^0.2.1",
+    "prepper": "^1.1.0",
     "ramda": "^0.21.0",
     "require-all": "^2.2.0",
     "systemic": "^1.3.0",
