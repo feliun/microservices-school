@@ -1,5 +1,5 @@
 {
-  "name": "recipes-ip-generator",
+  "name": "recipes-id-generator",
   "version": "0.0.1",
   "description": "An ID generator",
   "main": "index.js",
