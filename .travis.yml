@@ -45,6 +45,9 @@ matrix:
   - env: SERVICE=recipes-crawler
     services:
     - docker
+  - env: SERVICE=recipes-id-generator
+    services:
+    - docker
 notifications:
   slack:
     secure: eJtVJ7Kj2e3vjJazLAayQ7in1zgY/7/+yWd0lPckymkEQFbbgpN8AGWCNePG+9AWMjzb7icQ7tHGi8ZBxCEd6cJp6bTBgBMRZjBagMzfMwmej193Sg0GGvg2DVKjTzDY3x0btU+h0K23raAFc6UIpYqm84CiD7RhGh5GRDbXSpynhD9GWuGkZWj3eezr/ZIzfRAeV63y/2mE8e0Sx29rS367ktW/0mN65J1AlcDtsMiwlHVNX9CQh6FQBOK4o3BbmTvjpz8Gz5mpBKdq5JBhoSAI+/QRK9+Vy3oA/cpdJoMT96nxuvJIVqNOw24JxrBK+mp8V6xvk31oOOsJeQCqysiRTNImujCJ26xgsty/HDeLIA2AyCNqEqkSZhbYHpBXwjenbrperRl3twiAGpnbYBrE4lBHi1dGNYtde4c5q2fac/t9Q3fsNGua92ryRvlJhs+jU7Cvgebg3x2FjJ0fzmLOHkXDdhMETPYFVBspMhBw7gSN3CQhO10gGEoh7CqwZuL7xTLsnj9745bfbISHdiTph4fo442XG9Vs6eUJ9fp/HZ/J9jU2OB0LOmx1Ei1yCBhTR8agDAqQGXwCnTxXxhBJo0lF4t5dOV3eIvEL2pwnNbw+vCYWaV6FZrNEcIG6/2FnTTnmwvTuDmbf3njTi72Omaikn9upptciOPKEDyg=
