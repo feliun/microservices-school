@@ -1,7 +1,7 @@
 module.exports = {
   generator: {
     options: {
-      url: 'mongodb://127.0.0.1/recipes'
+      url: 'mongodb://mongo:27017/ysojkvfe'
     }
   },
   logger: {
