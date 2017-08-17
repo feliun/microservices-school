@@ -912,6 +912,10 @@ http-proxy@^1.16.2:
     eventemitter3 "1.x.x"
     requires-port "1.x.x"
 
+http-status-codes@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/http-status-codes/-/http-status-codes-1.2.0.tgz#bfe719129128f268d7ac47026141ef81af49ce48"
+
 husky@^0.11.4:
   version "0.11.9"
   resolved "https://registry.yarnpkg.com/husky/-/husky-0.11.9.tgz#28cd1dc16bffdca1d4d93592814e5f3c327b38ee"
@@ -1324,7 +1328,7 @@ mongodb-core@2.1.15:
     bson "~1.0.4"
     require_optional "~1.0.0"
 
-mongodb@^2.1.18:
+mongodb@^2.1.18, mongodb@^2.2.1:
   version "2.2.31"
   resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-2.2.31.tgz#1940445c661e19217bb3bf8245d9854aaef548db"
   dependencies:
@@ -1937,6 +1941,15 @@ systemic-express@^1.0.1:
     lodash.once "^4.0.0"
     parse-duration "^0.1.1"
     server-destroy "^1.0.1"
+
+systemic-mongodb@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/systemic-mongodb/-/systemic-mongodb-1.0.4.tgz#e97014e441fea94f54594021303c1875f11f8e0c"
+  dependencies:
+    async "^2.0.0"
+    lodash.get "^4.3.0"
+    lodash.has "^4.4.0"
+    mongodb "^2.2.1"
 
 systemic-pg@^1.0.6:
   version "1.2.0"

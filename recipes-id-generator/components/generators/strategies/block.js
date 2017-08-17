@@ -2,7 +2,7 @@ const R = require('ramda');
 const { BlockArray } = require('block-sequence');
 const init = require('block-sequence-mongo');
 
-module.exports = (options, logger) => new Promise((resolve, reject) => {
+module.exports = (options) => new Promise((resolve, reject) => {
 
   let idGenerator;
 
@@ -23,7 +23,7 @@ module.exports = (options, logger) => new Promise((resolve, reject) => {
     if (err) return reject(err);
     driver.ensure({ name }, (err, sequence) => {
       if (err) return reject(err);
-      const driverOpts = { block: { sequence, driver }};
+      const driverOpts = { block: { sequence, driver, size: options.size }};
       const blockConfig = R.merge(options, driverOpts);
       idGenerator = new BlockArray(blockConfig);
       resolve(generate);

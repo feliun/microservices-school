@@ -1,4 +1,4 @@
-let currentId = 0;
+let currentId = 1;
 
 const generate = () =>
   Promise.resolve(currentId)

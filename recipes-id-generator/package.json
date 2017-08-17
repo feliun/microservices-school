@@ -23,7 +23,8 @@
     "make-manifest": "^0.1.2",
     "mocha": "^2.5.3",
     "supertest": "^3.0.0",
-    "supertest-as-promised": "^4.0.2"
+    "supertest-as-promised": "^4.0.2",
+    "systemic-mongodb": "^1.0.4"
   },
   "dependencies": {
     "R": "0.0.1",
@@ -37,6 +38,7 @@
     "debug": "^2.2.0",
     "hogan.js": "^3.0.2",
     "http-proxy-middleware": "^0.17.4",
+    "http-status-codes": "^1.2.0",
     "on-headers": "^1.0.1",
     "optimist": "^0.6.1",
     "optional": "^0.1.3",

@@ -9,7 +9,7 @@ module.exports = {
       size: 1,
       block: {
         prime: false,
-        size: 100,
+        size: 1,
         retry: {
           limit: 100,
           interval: 100
@@ -22,13 +22,6 @@ module.exports = {
           }
         },
         template: "{{=sequence.name}}-{{=id}}-{{=sequence.metadata.environment}}"
-      }
-    }
-  },
-  routes: {
-    proxy: {
-      routes: {
-        '/api/1.0/other': 'http://other.example.com'
       }
     }
   },
