@@ -248,10 +248,8 @@ commander@2.3.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.3.0.tgz#fd430e889832ec353b9acd1de217c11cb3eef873"
 
 commander@^2.9.0:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-2.9.0.tgz#9c99094176e12240cb22d6c5146098400fe0f7d4"
-  dependencies:
-    graceful-readlink ">= 1.0.0"
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.11.0.tgz#157152fd1e7a6c8d98a5b715cf376df928004563"
 
 component-emitter@^1.2.0:
   version "1.2.1"
@@ -820,10 +818,6 @@ graceful-fs@4.1.11, graceful-fs@^4.1.2:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
-"graceful-readlink@>= 1.0.0":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
-
 growl@1.9.2:
   version "1.9.2"
   resolved "https://registry.yarnpkg.com/growl/-/growl-1.9.2.tgz#0ea7743715db8d8de2c5ede1775e1b45ac85c02f"
@@ -1150,7 +1144,11 @@ lodash.once@^4.0.0:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.once/-/lodash.once-4.1.1.tgz#0dd3971213c7c56df880977d504c88fb471a97ac"
 
-lodash.set@^4.1.0, lodash.set@^4.2.0:
+lodash.reduce@^4.5.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/lodash.reduce/-/lodash.reduce-4.6.0.tgz#f1ab6b839299ad48f784abbf476596f03b914d3b"
+
+lodash.set@^4.1.0, lodash.set@^4.2.0, lodash.set@^4.3.0:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/lodash.set/-/lodash.set-4.3.2.tgz#d8757b1da807dde24816b0d6a84bea1a76230b23"
 
@@ -1166,13 +1164,15 @@ lru-cache@2:
   version "2.7.3"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-2.7.3.tgz#6d4524e8b955f95d4f5b58851ce21dd72fb4e952"
 
-make-manifest@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/make-manifest/-/make-manifest-0.1.2.tgz#6453f4d9996bfc54a8cff1ab0898b9e02a6cf643"
+make-manifest@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/make-manifest/-/make-manifest-1.0.1.tgz#1d205ea714e0f180585292829618cebba4417f3b"
   dependencies:
     commander "^2.9.0"
     git-rev-sync "^1.6.0"
     lodash.merge "^4.4.0"
+    lodash.reduce "^4.5.0"
+    lodash.set "^4.3.0"
     remote-origin-url "^0.5.1"
 
 media-typer@0.3.0:
@@ -1406,7 +1406,7 @@ parse-duration@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/parse-duration/-/parse-duration-0.1.1.tgz#13114ddc9891c1ecd280036244554de43647a226"
 
-parse-git-config@^1.0.2:
+parse-git-config@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/parse-git-config/-/parse-git-config-1.1.1.tgz#d3a9984317132f57398712bba438e129590ddf8c"
   dependencies:
@@ -1625,10 +1625,10 @@ regex-cache@^0.4.2:
     is-primitive "^2.0.0"
 
 remote-origin-url@^0.5.1:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/remote-origin-url/-/remote-origin-url-0.5.2.tgz#e8dd2e188b4f2c215f0127e76ab81b14f38eb748"
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/remote-origin-url/-/remote-origin-url-0.5.3.tgz#b9fc6ced2c826690d0b07218b2b8c17fcec88e87"
   dependencies:
-    parse-git-config "^1.0.2"
+    parse-git-config "^1.1.1"
 
 remove-trailing-separator@^1.0.1:
   version "1.0.1"
