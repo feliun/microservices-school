@@ -41,6 +41,7 @@
     "http-proxy-middleware": "^0.17.4",
     "http-status-codes": "^1.2.0",
     "make-manifest": "^1.0.1",
+    "node-ssh": "^4.2.3",
     "on-headers": "^1.0.1",
     "optimist": "^0.6.1",
     "optional": "^0.1.3",
