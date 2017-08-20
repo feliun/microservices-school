@@ -1,4 +1,4 @@
-# svc-example
+# basic-microservice
 An example service using
 
 * [systemic](https://github.com/guidesmiths/systemic)
