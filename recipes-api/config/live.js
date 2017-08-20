@@ -1,4 +1,7 @@
 module.exports = {
+  logger: {
+    transport: 'sumo'
+  },
   mongo: {
     url: process.env.MONGO_URL || 'mongodb://mongo:27017/ysojkvfe'
   },

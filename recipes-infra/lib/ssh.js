@@ -6,7 +6,7 @@ const { wait } = require('./utils');
 const EC2_USER = 'ec2-user';
 const MAX_ATTEMPTS = 3;
 const MIN_STARTUP_TIME = 5000;
-const ENV_VARS = ['MONGO_URL', 'RABBIT_PWD', 'SERVICE', 'F2F_KEY', 'SERVICE_PORT'];
+const ENV_VARS = ['MONGO_URL', 'RABBIT_PWD', 'SERVICE', 'F2F_KEY', 'SERVICE_PORT', 'SUMO_URL'];
 
 const runInstallation = (publicDns, pemKeyPath) => {
   const ssh = new nodeSSH();
