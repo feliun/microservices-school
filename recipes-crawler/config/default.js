@@ -22,8 +22,8 @@ module.exports = {
       'response.time',
       'process',
       'system',
-      'package.name',
-      'service'
+      'env',
+      'app'
     ],
     exclude: [
       'password',

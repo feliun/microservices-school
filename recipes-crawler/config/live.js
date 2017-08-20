@@ -1,4 +1,7 @@
 module.exports = {
+  logger: {
+    transport: 'sumo'
+  },
   rabbitmq: {
     defaults: {},
     vhosts: {
