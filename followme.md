@@ -114,4 +114,11 @@ npm t
 5. Check the mongo collection
 6. Enter docker container for recipes-crawler and check logs in /var/log/supervisor
 
-# Architecture principles
+## Logging
+- Create a free account in https://www.sumologic.com
+
+# Fixing an architectural issue
+
+## Creating a infrastructure microservice: ID generator
+- Few strategies implemented [here](https://github.com/feliun/microservices-school/tree/master/recipes-id-generator/components/generators/strategies).
+
