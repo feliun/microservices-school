@@ -40,6 +40,7 @@
     "hogan.js": "^3.0.2",
     "http-proxy-middleware": "^0.17.4",
     "http-status-codes": "^1.2.0",
+    "logs-to-sumologic": "^1.1.0",
     "make-manifest": "^1.0.1",
     "node-ssh": "^4.2.3",
     "on-headers": "^1.0.1",

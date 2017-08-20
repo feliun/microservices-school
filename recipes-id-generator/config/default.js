@@ -44,9 +44,8 @@ module.exports = {
       'response.headers',
       'response.time',
       'process',
-      'system',
-      'package.name',
-      'service'
+      'app',
+      'env'
     ],
     exclude: [
       'password',
