@@ -6,9 +6,10 @@ const stores = require('require-all')({
 
 module.exports = () => {
 
-  const start = ({ config: store, collections, logger, broker }, cb) => {
-    const pickedStore = stores[store] && stores[store](collections);
-    if (!pickedStore) return cb(new Error(`No available store with name ${store}`));
+  const start = ({ config, collections, logger, broker }, cb) => {
+    const { strategy } = config;
+    const pickedStore = stores[strategy] && stores[strategy](collections);
+    if (!pickedStore) return cb(new Error(`No available store with name ${strategy}`));
 
     const publish = (obj, action) => broker.publish('conclusions', obj, `recipes_api.v1.notifications.recipe.${action}`);
 

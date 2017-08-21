@@ -11,9 +11,9 @@ const stores = require('require-all')({
   filter: (fileName) => fileName === 'index.js' ? undefined : fileName.replace('.js', '')
 });
 
-const test = (store) => {
+const test = (strategy) => {
 
-  describe(`Recipes API based on ${store} store`, () => {
+  describe(`Recipes API based on ${strategy} store`, () => {
     let request;
     let sys;
     let myStore;
@@ -28,7 +28,7 @@ const test = (store) => {
     before(done => {
       configSystem.start((err, { config }) => {
         if (err) return done(err);
-        myConfig = R.merge(config, { store });
+        myConfig = R.merge(config, { store: { strategy } });
         sys = system(mockFn).start((err, { app, store }) => {
           if (err) return done(err);
           request = supertest(Promise)(app);

@@ -9,8 +9,8 @@ const stores = require('require-all')({
   filter: (fileName) => fileName === 'index.js' ? undefined : fileName.replace('.js', '')
 });
 
-const test = (store) => {
-  describe(`Testing store ${store}`, () => {
+const test = (strategy) => {
+  describe(`Testing store ${strategy}`, () => {
     let myStore;
     let sys;
     let myConfig;
@@ -23,7 +23,7 @@ const test = (store) => {
     before(done => {
       configSystem.start((err, { config }) => {
         if (err) return done(err);
-        myConfig = R.merge(config, { store });
+        myConfig = R.merge(config, { store: { strategy } });
         sys = system(mockFn).start((err, { store, broker }) => {
           if (err) return done(err);
           myBroker = broker;
