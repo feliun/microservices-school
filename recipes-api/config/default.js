@@ -7,7 +7,11 @@ module.exports = {
     url: 'mongodb://127.0.0.1/recipes'
   },
   store: {
-    strategy: 'mongo'
+    strategy: 'mongo',
+    idGenerator: {
+      host: 'http://127.0.0.1:3002',
+      path: '/api/v1/id'
+    }
   },
   logger: {
     transport: 'bunyan',

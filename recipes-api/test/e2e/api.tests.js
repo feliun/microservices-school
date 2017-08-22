@@ -1,6 +1,7 @@
 const R = require('ramda');
 const { join } = require('path');
 const expect = require('expect.js');
+const nock = require('nock');
 const statusCodes = require('http-status-codes');
 const supertest = require('supertest-as-promised');
 const configSystem = require('../../components/config');
@@ -19,7 +20,7 @@ const test = (strategy) => {
     let myStore;
     let myConfig;
 
-    const normalise = R.omit('_id');
+    const normalise = R.omit(['_id', 'id']);
 
     const mockFn = (system) =>
       system()
@@ -28,7 +29,7 @@ const test = (strategy) => {
     before(done => {
       configSystem.start((err, { config }) => {
         if (err) return done(err);
-        myConfig = R.merge(config, { store: { strategy } });
+        myConfig = R.merge(config, { store: { strategy, idGenerator: config.store.idGenerator } });
         sys = system(mockFn).start((err, { app, store }) => {
           if (err) return done(err);
           request = supertest(Promise)(app);
@@ -41,43 +42,54 @@ const test = (strategy) => {
     beforeEach(() => myStore.flush());
     after(done => sys.stop(done));
 
-    const post = (recipe) =>
-      request
+    const nockIdGenerator = (id, expectedStatusCode = statusCodes.OK) => {
+      const { host, path } = myConfig.store.idGenerator;
+      nock(host)
+      .get(path)
+      .reply(expectedStatusCode, { id });
+    };
+
+    const post = (recipe, id = 1) => {
+      nockIdGenerator(id);
+      return request
         .post('/api/v1/recipes')
         .send(recipe)
-        .expect(statusCodes.NO_CONTENT)
+        .expect(statusCodes.NO_CONTENT);
+    };
 
-    const get = (id, expectation) =>
-      request
-        .get(`/api/v1/recipes/${recipe.id}`)
+    const get = (id, expectation) => {
+      return request
+        .get(`/api/v1/recipes/${id}`)
         .expect(expectation || statusCodes.OK)
+    }
 
     const erase = (id) =>
       request
-        .delete(`/api/v1/recipes/${recipe.id}`)
+        .delete(`/api/v1/recipes/${id}`)
         .expect(statusCodes.NO_CONTENT)
 
     it('should POST a recipe', () => post(recipe));
 
-    it('should GET a recipe', () =>
-      post(recipe)
+    it('should GET a recipe', () => {
+      const EXPECTED_ID = 2;
+      return post(recipe, EXPECTED_ID)
         .then(() =>
-          get(recipe.id)
+          get(EXPECTED_ID)
             .then((response) => {
               expect(response.headers['content-type']).to.equal('application/json; charset=utf-8');
               expect(normalise(response.body)).to.eql(normalise(recipe));
             })
         )
-    );
+    });
 
-    it('should DELETE a recipe', () =>
-      post(recipe)
+    it('should DELETE a recipe', () => {
+      const EXPECTED_ID = 2;
+      return post(recipe, EXPECTED_ID)
         .then(() =>
-          erase(recipe.id)
-            .then(() => get(recipe.id, statusCodes.NOT_FOUND))
-        )
-    );
-
+          erase(EXPECTED_ID)
+            .then(() => get(EXPECTED_ID, statusCodes.NOT_FOUND))
+        );
+    });
   });
 };
 

@@ -16,8 +16,6 @@ module.exports = () => {
     app.post('/api/v1/recipes', (req, res, next) => {
       // TODO apply Joi validation
       if(!req.body) return next(Boom.badRequest('Invalid or missing body'));
-      if(!req.body.id) return next(Boom.badRequest('Invalid or missing id'));
-
       store.saveRecipe(req.body)
         .then(() => res.status(204).send())
         .catch(next);
