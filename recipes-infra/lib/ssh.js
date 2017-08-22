@@ -20,6 +20,8 @@ const runInstallation = (publicDns, pemKeyPath) => {
     .then(() => ssh.execCommand('sudo yum install -y docker', { cwd:'.' }))
     .then(() => ssh.execCommand('sudo service docker start', { cwd:'.' }))
     .then(() => ssh.execCommand('sudo usermod -a -G docker ec2-user', { cwd:'.' }))
+    .then(() => ssh.execCommand('docker network create local', { cwd:'.' }))
+    .then(() => ssh.execCommand('docker network ls', { cwd:'.' }))
     .then(() => ssh.execCommand('docker ps', { cwd:'.' }))
   )
   .catch((e) => {
