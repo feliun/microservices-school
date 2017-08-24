@@ -20,12 +20,12 @@ const runInstallation = (publicDns, pemKeyPath) => {
     .then(() => ssh.execCommand('sudo yum install -y docker', { cwd:'.' }))
     .then(() => ssh.execCommand('sudo service docker start', { cwd:'.' }))
     .then(() => ssh.execCommand('sudo usermod -a -G docker ec2-user', { cwd:'.' }))
-    .then(() => ssh.execCommand('docker network create local', { cwd:'.' }))
-    .then(console.log)
-    .then(() => ssh.execCommand('docker network inspect local', { cwd:'.' }))
-    .then(console.log)
-    .then(() => ssh.execCommand('docker ps', { cwd:'.' }))
-    .then(console.log)
+    .then(() => ssh.execCommand('sudo docker network create local', { cwd:'.' }))
+    .then(({ stdout }) => console.log(stdout))
+    .then(() => ssh.execCommand('sudo docker network inspect local', { cwd:'.' }))
+    .then(({ stdout }) => console.log(stdout))
+    .then(() => ssh.execCommand('sudo docker ps', { cwd:'.' }))
+    .then(({ stdout }) => console.log(stdout))
   )
   .catch((e) => {
     if (e.code !== 'ECONNREFUSED') throw e;
