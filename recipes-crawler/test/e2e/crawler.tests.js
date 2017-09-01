@@ -39,9 +39,11 @@ describe('Crawls a source url to get recipes and publishes them', () => {
     });
   });
 
-  const createSearchResponse = () => JSON.stringify(recipesSearch);
+  const random = () => Math.floor(Math.random() * 100000);
 
-  const createSearchNock = (statusCode, searchResponse) =>
+  const createSearchResponse = (recipes) => JSON.stringify(recipes || recipesSearch);
+
+  const nockExternalApiSearch = (statusCode, searchResponse) =>
     nock(myConfig.baseUrl)
       .get(`${myConfig.searchSuffix}`)
       .query({
@@ -50,7 +52,24 @@ describe('Crawls a source url to get recipes and publishes them', () => {
       })
       .reply(statusCode, searchResponse);
 
-  const createRecipeNock = R.curry((statusCode, recipe_id) => {
+  const nockRecipesApi = R.curry((statusCode, findResponse) => {
+    const { host, path, query } = myConfig.recipesApi;
+    nock(host)
+      .get(path.replace(':id', findResponse.recipe_id))
+      .query({
+          key: query.value
+      })
+      .reply(statusCode, findResponse);
+  });
+
+  const nockIdGenerator = (statusCode, expectedId) => {
+    const { host, path } = myConfig.idGenerator;
+    nock(host)
+      .get(path)
+      .reply(statusCode, { id: expectedId });
+  };
+
+  const nockExternalApiGet = R.curry((statusCode, recipe_id) => {
     const getRecipe = R.pipe(
       R.find(R.propEq('recipe_id', recipe_id)),
       R.merge({ ingredients: [] })
@@ -92,20 +111,60 @@ describe('Crawls a source url to get recipes and publishes them', () => {
     ['publisher','ingredients','source_url','image_url',
      'social_rank','title','source_id','source'].forEach((field) => expect(recipe[field]).to.be.ok());
      expect(recipe.source).to.equal('F2F');
-     expect(recipe.id).to.be.a('string');
+     expect(recipe.id).to.be.a('number');
      expect(recipe.version).to.be.greaterThan(0);
   };
 
   it('fails when search endpoint is not available', () => startSystem().then(() => shouldNotReceive()));
 
   it('fails when recipes endpoint is not available', () => {
-    createSearchNock(200, createSearchResponse());
+    nockExternalApiSearch(200, createSearchResponse());
     return startSystem().then(() => shouldNotReceive());
   });
 
+  it('publishes a recipe with the recorded id whenever the recipes API returns that it already exists', () => {
+    const myRecipe = R.head(recipesSearch.recipes);
+    const sampleMsg = {
+      count: 1,
+      recipes: [ myRecipe ]
+    };
+    const existentId = myRecipe.recipe_id;
+    nockExternalApiSearch(200, createSearchResponse(sampleMsg));
+    nockExternalApiGet(200, existentId);
+    nockRecipesApi(200, R.merge(myRecipe, { id: existentId }));
+    return startSystem()
+      .then(() => wait(PAUSE))
+      .then(() => shouldReceive('recipes_crawler.v1.notifications.recipe.crawled', sampleMsg.recipes.length))
+      .then(([ received ]) => {
+        expect(myRecipe.id).to.equal(undefined);
+        expect(received.id).to.equal(myRecipe.recipe_id);
+      });
+  });
+
+  it('publishes a recipe with a new generated id whenever the API cannot find it', () => {
+    const myRecipe = R.head(recipesSearch.recipes);
+    const sampleMsg = {
+      count: 1,
+      recipes: [ myRecipe ]
+    };
+    const existentId = myRecipe.recipe_id;
+    nockExternalApiSearch(200, createSearchResponse(sampleMsg));
+    nockExternalApiGet(200, existentId);
+    nockRecipesApi(404, R.merge(myRecipe, { id: existentId }));
+    const newId = 1234567890;
+    nockIdGenerator(200, newId);
+    return startSystem()
+      .then(() => wait(PAUSE))
+      .then(() => shouldReceive('recipes_crawler.v1.notifications.recipe.crawled', sampleMsg.recipes.length))
+      .then(([ received ]) => {
+        expect(received.id).to.equal(newId);
+      });
+  });
+
   it('publishes as many recipes as the search page returned when everything goes OK', () => {
-    createSearchNock(200, createSearchResponse());
-    R.map(createRecipeNock(200), R.pluck('recipe_id', recipesSearch.recipes));
+    nockExternalApiSearch(200, createSearchResponse());
+    R.map(nockExternalApiGet(200), R.pluck('recipe_id', recipesSearch.recipes));
+    R.map(nockRecipesApi(200), recipesSearch.recipes);
     return startSystem()
       .then(() => wait(PAUSE))
       .then(() => shouldReceive('recipes_crawler.v1.notifications.recipe.crawled', recipesSearch.recipes.length))
@@ -113,8 +172,10 @@ describe('Crawls a source url to get recipes and publishes them', () => {
   });
 
   it('publishes recipes applying a transformation on all of them', () => {
-    createSearchNock(200, createSearchResponse());
-    R.map(createRecipeNock(200), R.pluck('recipe_id', recipesSearch.recipes));
+    nockExternalApiSearch(200, createSearchResponse());
+    R.map(nockExternalApiGet(200), R.pluck('recipe_id', recipesSearch.recipes));
+    const recipesWithIds = R.map(R.merge({ id: random(), ingredients: [] }), recipesSearch.recipes);
+    R.map(nockRecipesApi(200), recipesWithIds);
     return startSystem()
       .then(() => wait(PAUSE))
       .then(() => shouldReceive('recipes_crawler.v1.notifications.recipe.crawled', recipesSearch.recipes.length))

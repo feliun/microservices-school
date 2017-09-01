@@ -2,6 +2,14 @@ module.exports = {
   logger: {
     transport: 'sumo'
   },
+  crawler: {
+    recipesApi: {
+      host: 'http://recipes-api:3000'
+    },
+    idGenerator: {
+      host: 'http://recipes-id-generator:3002'
+    }
+  },
   rabbitmq: {
     defaults: {},
     vhosts: {

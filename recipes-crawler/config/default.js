@@ -39,6 +39,18 @@ module.exports = {
     baseUrl: 'http://food2fork.com/api',
     searchSuffix: '/search',
     recipeSuffix: '/get',
+    recipesApi: {
+      host: 'http://127.0.0.1:3000',
+      path: '/api/v1/recipes/:id',
+      query: {
+        key: 'key',
+        value: 'source_id'
+      }
+    },
+    idGenerator: {
+      host: 'http://127.0.0.1:3002',
+      path: '/api/v1/id'
+    }
   },
   rabbitmq: {
     defaults: {},
