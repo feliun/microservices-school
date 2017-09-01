@@ -57,9 +57,10 @@ const test = (strategy) => {
         .expect(statusCodes.NO_CONTENT);
     };
 
-    const get = (id, expectation) => {
+    const get = (id, expectation, query = {}) => {
       return request
         .get(`/api/v1/recipes/${id}`)
+        .query(query)
         .expect(expectation || statusCodes.OK)
     }
 
@@ -75,6 +76,18 @@ const test = (strategy) => {
       return post(recipe, EXPECTED_ID)
         .then(() =>
           get(EXPECTED_ID)
+            .then((response) => {
+              expect(response.headers['content-type']).to.equal('application/json; charset=utf-8');
+              expect(normalise(response.body)).to.eql(normalise(recipe));
+            })
+        )
+    });
+
+    it('should GET a recipe by source id', () => {
+      const EXPECTED_ID = 2;
+      return post(recipe, EXPECTED_ID)
+        .then(() =>
+          get(recipe.source_id, statusCodes.OK, { key: 'source_id' })
             .then((response) => {
               expect(response.headers['content-type']).to.equal('application/json; charset=utf-8');
               expect(normalise(response.body)).to.eql(normalise(recipe));

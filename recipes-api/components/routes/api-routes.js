@@ -8,7 +8,8 @@ module.exports = () => {
     app.use(bodyParser.json());
 
     app.get('/api/v1/recipes/:id', (req, res, next) => {
-      store.getRecipe(req.params.id)
+      const method = req.query.key && req.query.key === 'source_id' ? 'getRecipeBySourceId' : 'getRecipe';
+      store[method](req.params.id)
         .then((recipe) => recipe ? res.json(recipe) : next())
         .catch(next);
     });

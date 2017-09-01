@@ -80,6 +80,12 @@ module.exports = () => {
       .catch(makeItRecoverable);
     };
 
+    const getRecipeBySourceId = (sourceId) => {
+      if (!sourceId) return Promise.reject(new Error('Could not get recipe with no source id'));
+      return pickedStore.getRecipeBySourceId(sourceId)
+      .catch(makeItRecoverable);
+    };
+
     const flush = () => {
       if (process.env.NODE_ENV !== 'test') throw new Error('Flushing the store is not allowed!');
       return pickedStore.flush();
@@ -94,6 +100,7 @@ module.exports = () => {
       saveRecipe,
       deleteRecipe,
       getRecipe,
+      getRecipeBySourceId,
       flush
     };
 

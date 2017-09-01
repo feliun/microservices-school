@@ -8,6 +8,8 @@ module.exports = ({ recipes }) => {
 
   const getRecipe = (id) => recipes.findOne({ id });
 
+  const getRecipeBySourceId = (sourceId) => recipes.findOne({ source_id: sourceId });
+
   const flush = (query = {}) => recipes.remove(query);
 
   return {
@@ -15,6 +17,7 @@ module.exports = ({ recipes }) => {
     deleteRecipe,
     updateRecipe,
     getRecipe,
+    getRecipeBySourceId,
     flush
   };
 

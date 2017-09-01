@@ -80,6 +80,22 @@ const test = (strategy) => {
 
     const normalise = R.omit(['_id', 'id']);
 
+    it('should get a recipe by id', () => {
+      const expectedId = 1;
+      nockIdGenerator(expectedId);
+      return myStore.saveRecipe(recipe)
+        .then(() => myStore.getRecipe(expectedId))
+        .then((saved) => expect(normalise(saved)).to.eql(normalise(recipe)))
+    });
+
+    it('should get a recipe by source id', () => {
+      const expectedId = 1;
+      nockIdGenerator(expectedId);
+      return myStore.saveRecipe(recipe)
+        .then(() => myStore.getRecipeBySourceId(recipe.source_id))
+        .then((saved) => expect(normalise(saved)).to.eql(normalise(recipe)))
+    });
+
     it('should save a recipe with no id, requesting one for it', () => {
       const expectedId = 1;
       nockIdGenerator(expectedId);

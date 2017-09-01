@@ -1,3 +1,5 @@
+const R = require('ramda');
+
 module.exports = () => {
 
   let recipes = {};
@@ -19,6 +21,11 @@ module.exports = () => {
 
   const getRecipe = (id) => Promise.resolve(recipes[id]);
 
+  const getRecipeBySourceId = (sourceId) => {
+    const found = R.find(({ source_id }) => source_id === sourceId, R.values(recipes))
+    return Promise.resolve(found);
+  };
+
   const flush = () => new Promise((resolve) => {
     recipes = {};
     return resolve();
@@ -29,6 +36,7 @@ module.exports = () => {
     deleteRecipe,
     updateRecipe,
     getRecipe,
+    getRecipeBySourceId,
     flush
   };
 
