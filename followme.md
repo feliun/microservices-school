@@ -116,9 +116,14 @@ npm t
 
 ## Logging
 - Create a free account in https://www.sumologic.com
+- Add sumo to your service [like this](https://github.com/feliun/microservices-school/commit/c0fe69cca7838e57c9decc6e77cc170f97ec8b30)
+- Few logging strategies implemented [here](https://github.com/feliun/microservices-school/tree/master/recipes-id-generator/components/generators/strategies).
 
 # Fixing an architectural issue
 
 ## Creating a infrastructure microservice: ID generator
-- Few strategies implemented [here](https://github.com/feliun/microservices-school/tree/master/recipes-id-generator/components/generators/strategies).
+- Check out its code [here](https://github.com/feliun/microservices-school/tree/master/recipes-id-generator)
+- recipes-crawler to use the id generator if recipe is repeated: https://github.com/feliun/microservices-school/commit/0f210204a6142b08b633a4d5c80e068ef7d2e401
+- recipes-api to support getting recipes by source id: https://github.com/feliun/microservices-school/commit/21a0215a22b66c0846aa8d66559fa3705f220b28
+
 
