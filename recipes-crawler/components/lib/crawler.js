@@ -35,7 +35,7 @@ module.exports = () => {
     };
 
     const generateId = () => {
-      const { host, path, query } = config.idGenerator;
+      const { host, path } = config.idGenerator;
       const url = `${host}${path}`;
       debug(`Generating a new id from url: ${url}`);
       return request.get(url)
