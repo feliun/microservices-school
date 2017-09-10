@@ -29,7 +29,7 @@ module.exports = () => {
       return request.get(url)
         .then(({ body }) => body)
         .catch((err) => {
-          logger.error(`Error when finding recipe on url ${url}: ${err.message}`);
+          if (err.status !== 404) logger.error(`Error when finding recipe on url ${url}: ${err.message}`);
           throw err;
         });
     };
