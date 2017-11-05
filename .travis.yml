@@ -1,0 +1,40 @@
+sudo: false
+
+cache: yarn
+
+language: node_js
+
+env:
+  global:
+  - NODE_ENV='test'
+
+branches:
+  only:
+  - master
+
+before_install:
+  - cd ./$SERVICE
+  - nvm install
+  - nvm use
+  - node --version
+
+install: 
+  - npm install --only=production
+
+before_script:
+  - SERVICE=$SERVICE make ensure-dependencies
+
+script:
+  - npm run test
+
+matrix:
+  include:
+    - env: SERVICE=recipes-api
+      services:
+        - docker
+    - env: SERVICE=recipes-crawler
+      services:
+        - docker
+    - env: SERVICE=recipes-id-generator
+      services:
+        - docker
