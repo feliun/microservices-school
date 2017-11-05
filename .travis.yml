@@ -14,9 +14,6 @@ before_install:
   - nvm use
   - node --version
 
-install: 
-  - npm install --only=production
-
 before_script:
   - SERVICE=$SERVICE make ensure-dependencies
 
