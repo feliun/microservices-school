@@ -16,6 +16,7 @@ before_install:
 
 before_script:
   - SERVICE=$SERVICE make ensure-dependencies
+  - sleep 5
 
 script:
   - make qa
