@@ -1,35 +1,31 @@
 sudo: false
-
 cache: yarn
-
 language: node_js
-
 env:
   global:
   - NODE_ENV='test'
-
+  - secure: B0siTv85oBhwVqbbw17I/bKd1E8v7U7SzcvMgSLhYQpF3Yje95FoaDt0e3dVh8jy8i3nBChi0LiNnEwDTEEGtyABC2ZgZI2270tU06/JQ1m0IrwWIl3/FUotTVF6Rpqwym4YLrbeVr5Crt0+gzQEF+bsw47YKxuO+Kb4jG/STpHFg/fpeOMpEnlHD3qIx1PfeCVvXzyPoFC2mQcW6Xb1uVGQqpRcXTkIqWU8vBdEVJ5A1wUAEx9jxgZGKjswkiOuiSwBUJezIS4sGNoeHxAa7bq7uY0Zx2pARMsprXgrz/MG6oebAgbui4HhiJwLKSho1LVfISV8XM2LVGQ5QQXZTJoEi4fF4TX2nYG17XYbm7kaEPiwEtAmAp/P87H1T6iMiAOGR1WT8Za9mP1Jh0A+KpuTKPUUYapofz0dgzb6LWLOq/8Y50fevFZ0baDiqWIlhIJd9NAKppHGR5WPJVwlMNZfcQZpM//nWp1+B0fJn0UtoFJsC6/5uikQZ3K9D96GWbT4PagMPoQnlCZTU8jjC+tte8gqAECPj/Gl7sWCaML46MaLlsP6fHRiw4s3sCX98H0iMwUc2fUfjAabLeM+TVe1/soYf1grSMLhCd0AZwckEIirO9xJ34oSIVzJI1qdNaqQG0vkpPpqTgCzHZl6kSxpOFrxTDxTMHhpRZi3SA8=
+  - secure: BpsMKK822PkiLnC7/aLh72POPFkE+BK0bL65RVJwtAkkz0Sg1E5dbC2BB2ddObwh87vNK/Cr1KFE/66mnec5wFLVusTRcN7aCB0qyMfHrS6Ww54X1LtTKIuF48TLBKhTM3Z90SSr40H6gzA0qEb1MZMSQdl0NQb/HUpq8d1Ny7m83o65AZx0PHmoO7K9FR2+Vf35i4+YWUUS36Jwz9bt2NGJgmwy/OhH6u2sRruwzOSuL17Ww3fjtVI6SCW//GOPiGZOEGNoKzVSbkmPpYk02i+JYW9ajHiY8o1D6FRBTFI400kC7ZNqhoCtC1zsZZEerK87Y6wmt7/afacn1Ft6fXlrr8h0dVXFWEstnxdida2rIpbYViEKj+APy0w/y6VNv0NbLQqjn3Eg5Hheiaux0eKOqlGuH9wQqZafymG8Vk07kbNmiTCy6nNNFV66ILgl5h3VhN4+QnDLtVNCXEf1G8Cet3x7jQCfYCXO52ChH4XHCZkcChy33SvU6PdHWDIZp7ngh1MUG2dFEqIwERAZVVp66oXQ2irFkd7wvXiymnY2iBPri4woyqMxXGRa/MxJ2OZTJPrlFiBKwwCbd6F9vgmd0dbS4Z6Z0vWClCwaunw8gNXIqA3sgOrsr8rBRc5/nXbtQAX7mcPCr9MiLzM+TBK5sSIxKR9jqjWGLvnUa6w=
 before_install:
-  - cd ./$SERVICE
-  - nvm install
-  - nvm use
-  - node --version
-
+- cd ./$SERVICE
+- nvm install
+- nvm use
+- node --version
 before_script:
-  - SERVICE=$SERVICE make ensure-dependencies
-  - sleep 5
-
+- SERVICE=$SERVICE make ensure-dependencies
+- sleep 5
 script:
-  - make qa
-  - TRAVIS_BUILD_ID=$TRAVIS_BUILD_ID TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make brand
-
+- make qa
+- TRAVIS_BUILD_ID=$TRAVIS_BUILD_ID TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER make brand
+- DOCKER_USERNAME=$DOCKER_USERNAME DOCKER_PASSWORD=$DOCKER_PASSWORD make build
 matrix:
   include:
-    - env: SERVICE=recipes-api
-      services:
-        - docker
-    - env: SERVICE=recipes-crawler
-      services:
-        - docker
-    - env: SERVICE=recipes-id-generator
-      services:
-        - docker
+  - env: SERVICE=recipes-api
+    services:
+    - docker
+  - env: SERVICE=recipes-crawler
+    services:
+    - docker
+  - env: SERVICE=recipes-id-generator
+    services:
+    - docker

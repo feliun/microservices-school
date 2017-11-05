@@ -10,3 +10,6 @@ brand:
 
 ensure-dependencies:
 	@npm run docker
+
+build:
+	@docker login -u=$(DOCKER_USERNAME) -p=$(DOCKER_PASSWORD) quay.io
