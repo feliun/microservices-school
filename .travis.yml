@@ -8,10 +8,6 @@ env:
   global:
   - NODE_ENV='test'
 
-branches:
-  only:
-  - master
-
 before_install:
   - cd ./$SERVICE
   - nvm install
@@ -25,7 +21,7 @@ before_script:
   - SERVICE=$SERVICE make ensure-dependencies
 
 script:
-  - npm run test
+  - make qa
 
 matrix:
   include:
