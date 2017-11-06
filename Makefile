@@ -11,7 +11,7 @@ brand:
 ensure-dependencies:
 	@npm run docker
 
-build:
-	@docker login -u=$(DOCKER_USERNAME) -p=$(DOCKER_PASSWORD) quay.io
+package:
+	#@docker login -u=$(DOCKER_USERNAME) -p=$(DOCKER_PASSWORD) quay.io
 	@docker build --tag $(SERVICE):$(TRAVIS_BUILD_NUMBER) .
 	@docker images
