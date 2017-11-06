@@ -1,5 +1,7 @@
-lint:
-	@node_modules/.bin/eslint .
+DOCKER_HOST=quay.io
+DOCKER_ACCOUNT=feliun
+
+# CONTINUOS INTEGRATION
 
 qa:
 	@docker run --name $(SERVICE) --env SERVICE_ENV=build --rm --network=local --entrypoint npm $(SERVICE):$(TRAVIS_BUILD_NUMBER) run qa --
@@ -12,6 +14,12 @@ ensure-dependencies:
 	@npm run docker
 
 package:
-	#@docker login -u=$(DOCKER_USERNAME) -p=$(DOCKER_PASSWORD) quay.io
 	@docker build --tag $(SERVICE):$(TRAVIS_BUILD_NUMBER) .
 	@docker images
+
+archive: start
+	@docker login -u=$(DOCKER_USERNAME) -p=$(DOCKER_PASSWORD) $(DOCKER_HOST)
+	docker ps
+	@CONTAINER_ID=`docker ps | grep $(SERVICE) | awk '{print $$1}'` && \
+	docker commit $$CONTAINER_ID $(DOCKER_HOST)/$(DOCKER_ACCOUNT)/$(SERVICE)
+	docker push $(DOCKER_HOST)/$(DOCKER_ACCOUNT)/$(SERVICE)
