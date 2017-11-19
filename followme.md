@@ -127,4 +127,25 @@ npm t
 - recipes-crawler to use the id generator if recipe is repeated: https://github.com/feliun/microservices-school/commit/0f210204a6142b08b633a4d5c80e068ef7d2e401
 - recipes-api to support getting recipes by source id: https://github.com/feliun/microservices-school/commit/21a0215a22b66c0846aa8d66559fa3705f220b28
 
+# By Branches
 
+## all-services-developed
+
+## devops1
+### [CI: basic pipeline - commit, build, test](https://github.com/feliun/microservices-school/commit/83d3d449aae450891e9e9d580d5a7c8aecd4504d)
+### [CI: running lint as part of the qa process](https://github.com/feliun/microservices-school/commit/70c6a79f8b7d61fefc5b12aef39fadd2ca7b9f25)
+### [Installing prod and dev dependencies](https://github.com/feliun/microservices-school/commit/6bc9f259a0271a87ce2f61b26a7dc0eea87fe79d)
+### [Giving some time to docker containers](https://github.com/feliun/microservices-school/commit/9ca77b28fb2db94fb5f5bab1dff1c55b2e7c3c00)
+### [Brand step](https://github.com/feliun/microservices-school/commit/2f322b5c7a4edbb781f853adbb34431d5c0b9545)
+
+##devops-2-docker
+###[CI: logging into quay.io to be able to build](https://github.com/feliun/microservices-school/commit/dd11b848e1d0c9a07a58c6e698cabe8aa7f2ce33)
+###[Package step using Dockerfiles](https://github.com/feliun/microservices-school/commit/903ebff460a9cccb362582db214690cea6f5a30e)
+###[Simpler and faster build reusing the base image](https://github.com/feliun/microservices-school/commit/a63bfc3f57a950e5cc93b18b32c2bf88ba907466)
+###[Refining package step](https://github.com/feliun/microservices-school/commit/317b5dbb9e3edfa442ad725360a1fc68f3276303)
+###[Running tests inside container](https://github.com/feliun/microservices-school/commit/bc337034ed33053c17c20f8694c52c98ade19283)
+###[Archiving new version artefact](https://github.com/feliun/microservices-school/commit/2ee6de0a8175fda83f1cded00a26e019e5b79945)
+###[Defining start for each service](https://github.com/feliun/microservices-school/commit/442794c318e3f71b104fa78569eedf8ca003f147)
+###[Checking services are up and running](https://github.com/feliun/microservices-school/commit/df13574494d04ecf3a804a0147b486237e045cdc)
+###[Adding slack notifications](https://github.com/feliun/microservices-school/commit/8af9c5ed2eeef4cf52e2c861ef1bb75e566d24fd)
+###[Cleaner Makefile using export variables](https://github.com/feliun/microservices-school/commit/865ccf40f6bcb6f72b9b0a8ccb857ab08339920b)
