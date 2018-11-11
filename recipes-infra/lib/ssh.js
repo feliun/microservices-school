@@ -27,7 +27,7 @@ const runInstallation = (publicDns, pemKeyPath) => {
 				.then(() => ssh.execCommand('sudo docker network inspect local', { cwd: '.' }))
 				.then(({ stdout }) => console.log(stdout))
 				.then(() => ssh.execCommand('sudo docker ps', { cwd: '.' }))
-				.then(({ stdout }) => console.log(stdout)),
+				.then(({ stdout }) => console.log(stdout))
 		)
 		.catch(e => {
 			if (e.code !== 'ECONNREFUSED') throw e;
@@ -89,7 +89,7 @@ const replaceServiceContainer = (publicDns, pemKeyPath, environment) => {
 					return ssh.execCommand(`${applyEnv()} ./deploy.sh`, { cwd: '.' });
 				})
 				.then(({ stdout }) => console.log(stdout))
-				.then(() => checkStability()),
+				.then(() => checkStability())
 		);
 };
 
