@@ -7,7 +7,7 @@ services:
     container_name: mongo
     ports:
       - '27017:27017'
-    command: "--smallfiles --logpath=/dev/null"
+    command: "--logpath=/dev/null"
 
   rabbitmq:
     image: "rabbitmq:3-management"
