@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "R": "0.0.1",
-    "aws-sdk": "^2.94.0",
+    "aws-sdk": "^2.814.0",
     "body-parser": "^1.17.2",
     "boom": "^5.2.0",
     "bunyan": "^1.8.5",
