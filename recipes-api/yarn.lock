@@ -44,7 +44,7 @@ ajv@^4.7.0:
 
 amqplib@^0.5.1:
   version "0.5.1"
-  resolved "http://registry.yarnpkg.com/amqplib/-/amqplib-0.5.1.tgz#7cccfebabe56c2e984ea7a2243f7cefe6fbfc6cf"
+  resolved "https://registry.yarnpkg.com/amqplib/-/amqplib-0.5.1.tgz#7cccfebabe56c2e984ea7a2243f7cefe6fbfc6cf"
   dependencies:
     bitsyntax "~0.0.4"
     bluebird "^3.4.6"
@@ -174,7 +174,7 @@ bcrypt-pbkdf@^1.0.0:
 
 bitsyntax@~0.0.4:
   version "0.0.4"
-  resolved "http://registry.yarnpkg.com/bitsyntax/-/bitsyntax-0.0.4.tgz#eb10cc6f82b8c490e3e85698f07e83d46e0cba82"
+  resolved "https://registry.yarnpkg.com/bitsyntax/-/bitsyntax-0.0.4.tgz#eb10cc6f82b8c490e3e85698f07e83d46e0cba82"
   dependencies:
     buffer-more-ints "0.0.2"
 
@@ -190,7 +190,7 @@ bluebird@^3.3.1, bluebird@^3.4.6:
 
 body-parser@^1.17.2:
   version "1.17.2"
-  resolved "http://registry.yarnpkg.com/body-parser/-/body-parser-1.17.2.tgz#f8892abc8f9e627d42aedafbca66bf5ab99104ee"
+  resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.17.2.tgz#f8892abc8f9e627d42aedafbca66bf5ab99104ee"
   dependencies:
     bytes "2.4.0"
     content-type "~1.0.2"
@@ -242,7 +242,7 @@ bson@~1.0.4:
 
 buffer-more-ints@0.0.2:
   version "0.0.2"
-  resolved "http://registry.yarnpkg.com/buffer-more-ints/-/buffer-more-ints-0.0.2.tgz#26b3885d10fa13db7fc01aae3aab870199e0124c"
+  resolved "https://registry.yarnpkg.com/buffer-more-ints/-/buffer-more-ints-0.0.2.tgz#26b3885d10fa13db7fc01aae3aab870199e0124c"
 
 buffer-shims@~1.0.0:
   version "1.0.0"
@@ -882,7 +882,7 @@ formidable@^1.1.1:
 
 forward-emitter@^0.1.1:
   version "0.1.1"
-  resolved "http://registry.yarnpkg.com/forward-emitter/-/forward-emitter-0.1.1.tgz#56edd0c082250edba334e0b922ffd2c01939dee1"
+  resolved "https://registry.yarnpkg.com/forward-emitter/-/forward-emitter-0.1.1.tgz#56edd0c082250edba334e0b922ffd2c01939dee1"
 
 forwarded@~0.1.0:
   version "0.1.0"
@@ -1080,7 +1080,7 @@ http-signature@~1.1.0:
 
 http-status-codes@^1.1.6:
   version "1.1.6"
-  resolved "http://registry.yarnpkg.com/http-status-codes/-/http-status-codes-1.1.6.tgz#7a75d2b94d35a93183f39a0c8a6eb8963c20e50d"
+  resolved "https://registry.yarnpkg.com/http-status-codes/-/http-status-codes-1.1.6.tgz#7a75d2b94d35a93183f39a0c8a6eb8963c20e50d"
 
 husky@^0.11.4:
   version "0.11.9"
@@ -1259,7 +1259,7 @@ is-typedarray@~1.0.0:
 
 isarray@0.0.1:
   version "0.0.1"
-  resolved "http://registry.yarnpkg.com/isarray/-/isarray-0.0.1.tgz#8a18acfca9a8f4177e09abfc6038939b05d1eedf"
+  resolved "https://registry.yarnpkg.com/isarray/-/isarray-0.0.1.tgz#8a18acfca9a8f4177e09abfc6038939b05d1eedf"
 
 isarray@1.0.0, isarray@^1.0.0, isarray@~1.0.0:
   version "1.0.0"
@@ -1399,7 +1399,7 @@ lodash.toarray@^4.2.4:
 
 lodash@^3.5.0:
   version "3.10.1"
-  resolved "http://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
 lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.3.0, lodash@~4.17.2:
   version "4.17.4"
@@ -1407,7 +1407,7 @@ lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.3.0, lo
 
 lodash@~2.4.1:
   version "2.4.2"
-  resolved "http://registry.yarnpkg.com/lodash/-/lodash-2.4.2.tgz#fadd834b9683073da179b3eae6d9c0d15053f73e"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-2.4.2.tgz#fadd834b9683073da179b3eae6d9c0d15053f73e"
 
 logs-to-sumologic@^1.1.0:
   version "1.1.0"
@@ -1422,7 +1422,7 @@ lru-cache@2:
 
 lru-cache@^4.0.2:
   version "4.1.1"
-  resolved "http://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.1.tgz#622e32e82488b49279114a4f9ecf45e7cd6bba55"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.1.tgz#622e32e82488b49279114a4f9ecf45e7cd6bba55"
   dependencies:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
@@ -1444,7 +1444,7 @@ media-typer@0.3.0:
 
 merge-defaults@^0.2.1:
   version "0.2.1"
-  resolved "http://registry.yarnpkg.com/merge-defaults/-/merge-defaults-0.2.1.tgz#dd42248eb96bb6a51521724321c72ff9583dde80"
+  resolved "https://registry.yarnpkg.com/merge-defaults/-/merge-defaults-0.2.1.tgz#dd42248eb96bb6a51521724321c72ff9583dde80"
   dependencies:
     lodash "~2.4.1"
 
@@ -1547,8 +1547,8 @@ mocha@^2.5.3:
     to-iso-string "0.0.2"
 
 moment@^2.10.6:
-  version "2.18.1"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
+  version "2.29.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
 
 mongodb-core@2.1.12:
   version "2.1.12"
@@ -1882,7 +1882,7 @@ proxy-addr@~1.1.4:
 
 pseudomap@^1.0.2:
   version "1.0.2"
-  resolved "http://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
+  resolved "https://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
 
 punycode@1.3.2:
   version "1.3.2"
@@ -1925,7 +1925,7 @@ range-parser@~1.2.0:
 
 rascal@^1.1.0:
   version "1.1.0"
-  resolved "http://registry.yarnpkg.com/rascal/-/rascal-1.1.0.tgz#7093df116095122f2101fdf96db65cb59611d0ea"
+  resolved "https://registry.yarnpkg.com/rascal/-/rascal-1.1.0.tgz#7093df116095122f2101fdf96db65cb59611d0ea"
   dependencies:
     amqplib "^0.5.1"
     async "^2.1.4"
@@ -1950,7 +1950,7 @@ raw-body@~2.2.0:
 
 "readable-stream@1.x >=1.1.9":
   version "1.1.14"
-  resolved "http://registry.yarnpkg.com/readable-stream/-/readable-stream-1.1.14.tgz#7cf4c54ef648e3813084c636dd2079e166c081d9"
+  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-1.1.14.tgz#7cf4c54ef648e3813084c636dd2079e166c081d9"
   dependencies:
     core-util-is "~1.0.0"
     inherits "~2.0.1"
@@ -2250,7 +2250,7 @@ sshpk@^1.7.0:
 
 stashback@^0.1.2:
   version "0.1.2"
-  resolved "http://registry.yarnpkg.com/stashback/-/stashback-0.1.2.tgz#71f802efd10c6d6a938d86cccc6e9a602152dbf2"
+  resolved "https://registry.yarnpkg.com/stashback/-/stashback-0.1.2.tgz#71f802efd10c6d6a938d86cccc6e9a602152dbf2"
   dependencies:
     debug "^2.1.3"
     lodash "^3.5.0"
@@ -2280,7 +2280,7 @@ string-width@^2.0.0:
 
 string_decoder@~0.10.x:
   version "0.10.31"
-  resolved "http://registry.yarnpkg.com/string_decoder/-/string_decoder-0.10.31.tgz#62e203bc41766c6c28c9fc84301dab1c5310fa94"
+  resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-0.10.31.tgz#62e203bc41766c6c28c9fc84301dab1c5310fa94"
 
 string_decoder@~1.0.0:
   version "1.0.1"
@@ -2383,7 +2383,7 @@ systemic-pg@^1.0.6:
 
 systemic-rabbitmq@^1.0.1:
   version "1.0.1"
-  resolved "http://registry.yarnpkg.com/systemic-rabbitmq/-/systemic-rabbitmq-1.0.1.tgz#34139e03b89c73602b5d131bf214ca71c83f6724"
+  resolved "https://registry.yarnpkg.com/systemic-rabbitmq/-/systemic-rabbitmq-1.0.1.tgz#34139e03b89c73602b5d131bf214ca71c83f6724"
   dependencies:
     async "^2.4.0"
     lodash.get "^4.4.2"
@@ -2563,7 +2563,7 @@ xmlbuilder@4.2.1, xmlbuilder@^4.1.0:
 
 xregexp@^3.1.1:
   version "3.2.0"
-  resolved "http://registry.yarnpkg.com/xregexp/-/xregexp-3.2.0.tgz#cb3601987bfe2695b584000c18f1c4a8c322878e"
+  resolved "https://registry.yarnpkg.com/xregexp/-/xregexp-3.2.0.tgz#cb3601987bfe2695b584000c18f1c4a8c322878e"
 
 xtend@^4.0.0:
   version "4.0.1"
@@ -2571,4 +2571,4 @@ xtend@^4.0.0:
 
 yallist@^2.1.2:
   version "2.1.2"
-  resolved "http://registry.yarnpkg.com/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
+  resolved "https://registry.yarnpkg.com/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
